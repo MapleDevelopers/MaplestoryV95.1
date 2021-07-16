@@ -1,5 +1,5 @@
 #pragma once
-#include "../Structures/CMapLoadable.h"
+#include "../Classes/Definition/CMapLoadable.h"
 #include "../Classes/Definition/ZRef.h"
 
 /*
@@ -87,5 +87,8 @@ struct CLogin {
 	ZRef<CConnectionNoticeDlg> m_pConnectionDlg;
 	bool m_bIsWaitingVAC;
 	bool m_bIsVACDlgOn;
-	int m_tSentTimeVACPacket
+	//m_tSentTimeVACPacket
+	int m_nCountRelatedSvrs;
+	int m_nCountCharacters;
+	int m_nCountDataReceivedCharacters;
 };
