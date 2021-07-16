@@ -1,6 +1,7 @@
 #pragma once
-#include "../Classes/Definition/CMapLoadable.h"
-#include "../Structures/AvatarData.h"
+#include "CMapLoadable.h"
+#include "AvatarData.h"
+#include "COutPacket.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)
@@ -112,4 +113,8 @@ class CLogin : CMapLoadable
 	ZArray<unsigned long> m_adwCharacterID;
 	ZArray<ZXString<char>> m_asCharacterName;
 	ZArray<long> m_anWorldID;
+
+
+	public:
+		 void CLogin::SendRequest(CLogin*, COutPacket* oPacket)
 };

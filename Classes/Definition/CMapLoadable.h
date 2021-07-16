@@ -1,12 +1,12 @@
 #pragma once
 #include "CStage.h"
-#include "../Types/ZXString.h"
-#include "../Types/ZList.h"
-#include "../Types/ZArray.h"
-#include "../Types/ZRef.h"
-#include "../Types/ZMap.h"
-#include "../Structures/Rect.h"
-#include "../Structures/Point.h"
+#include "ZXString.h"
+#include "ZList.h"
+#include "ZArray.h"
+#include "ZRef.h"
+#include "ZMap.h"
+#include "Rect.h"
+#include "Point.h"
 
 /*
 00000000 CMapLoadable    struc; (sizeof = 0x148, align = 0x4, copyof_3709)

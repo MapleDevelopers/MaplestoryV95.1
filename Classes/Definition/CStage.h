@@ -1,7 +1,7 @@
 #pragma once
 #include "../Interfaces/Definition/IGObj.h"
 #include "../Interfaces/Definition/IUIMsgHandler.h"
-#include "../Types/ZrefCounted.h"
+#include "ZRefCounted.h"
 
 /*
 00000000 CStage          struc; (sizeof = 0x18, align = 0x4, copyof_3252)
