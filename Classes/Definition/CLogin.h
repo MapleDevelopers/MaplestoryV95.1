@@ -1,6 +1,5 @@
 #pragma once
 #include "../Classes/Definition/CMapLoadable.h"
-#include "../Classes/Definition/ZRef.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)
@@ -81,9 +80,8 @@
 000002C4 m_bCanHaveExtraChar dd ?
 000002C8 CLogin          ends
 */
-
-struct CLogin { 
-	CMapLoadable baseclass_0;
+class CLogin : CMapLoadable
+{
 	ZRef<CConnectionNoticeDlg> m_pConnectionDlg;
 	bool m_bIsWaitingVAC;
 	bool m_bIsVACDlgOn;
@@ -91,4 +89,10 @@ struct CLogin {
 	int m_nCountRelatedSvrs;
 	int m_nCountCharacters;
 	int m_nCountDataReceivedCharacters;
+	bool m_bRecommandWorld;
+	ZArray<AvatarData> m_aAvatarDataVAC;
+	ZArray<CLogin::RANK> m_aRankVAC;
+	ZArray<unsigned long> m_adwCharacterID;
+	ZArray<ZXString<char>> m_asCharacterName;
+	ZArray<long> m_anWorldID;
 };
