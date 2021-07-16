@@ -1,6 +1,7 @@
 #pragma once
 #include "../Types/ZrefCounted.h"
 #include "../Classes/Definition/IGObj.h"
+#include "../Classes/Definition/IUIMsgHandler.h"
 
 /*
 00000000 CStage          struc; (sizeof = 0x18, align = 0x4, copyof_3252)         

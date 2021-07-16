@@ -1,6 +1,7 @@
 #pragma once
 #include "../Classes/Definition/ZXString.h"
 #include "../Classes/Definition/ZList.h"
+#include "../Classes/Definition/ZArray.h"
 #include "../Classes/Definition/ZRef.h"
 #include "../Structures/CStage.h"
 #include "../Structures/Rect.h"
@@ -77,6 +78,18 @@ class CMapLoadable
 	};
 
 	/*
+	00000000 CMapLoadable::VISIBLE_BY_QUEST struc; (sizeof = 0x8, align = 0x4, copyof_3671)
+	00000000 pLayer          _com_ptr_t<_com_IIID<IWzGr2DLayer, &_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+	00000004 aQuestCond      ZArray<ZPair<unsigned short, long> > ?
+	00000008 CMapLoadable::VISIBLE_BY_QUEST ends
+	*/
+	struct VISIBLE_BY_QUEST
+	{
+		//pLayer
+		//ZArray<ZPair<unsigned short, long>> aQuestCond
+	};
+
+	/*
 	00000000 CMapLoadable    struc; (sizeof = 0x148, align = 0x4, copyof_3709)
 	00000000 baseclass_0     CStage ?
 	00000018 m_nJukeBoxItemID dd ?
@@ -125,7 +138,7 @@ class CMapLoadable
 	//m_lpLayerTransient
 	ZList<ZRef<CMapLoadable::OBSTACLE>> m_lpObstacle;
 	ZList<ZRef<CMapLoadable::REFLECTION_INFO>> m_lpRefInfo;
-	//m_lVisibleByQuest
+	ZList<ZRef<CMapLoadable::VISIBLE_BY_QUEST>> m_lVisibleByQuest;
 	//m_mNamedObj
 	//m_mTagedObj
 	//m_mlLayerBack
@@ -135,7 +148,7 @@ class CMapLoadable
 	RECT m_rcViewRange;
 	bool m_bSysOptTremble;
 	bool m_bMagLevelModifying;
-	//m_aObstacleInfo
+	ZArray<CMapLoadable::OBSTACLE_INFO> m_aObstacleInfo;
 	//m_tRestoreBgmVolume
 	int m_nRestoreBgmVolume;
 	bool m_bPlayHoldedBGM;
