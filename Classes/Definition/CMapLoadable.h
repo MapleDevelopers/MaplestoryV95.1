@@ -44,36 +44,6 @@
 */
 class CMapLoadable : CStage
 {
-	int m_nJukeBoxItemID;
-	//m_tNextMusic
-	bool m_bJukeBoxPlaying;
-	long m_unWeatherSoundCookie;
-	ZXString<unsigned short> m_sChangedBgmUOL;
-	//m_pPropFieldInfo
-	//m_pPropField
-	bool m_bField;
-	ZRef<CWvsPhysicalSpace2D> m_pSpace2D;
-	//m_lpLayerGen
-	//m_lpLayerObj
-	//m_lpLayerTransient
-	ZList<ZRef<CMapLoadable::OBSTACLE>> m_lpObstacle;
-	ZList<ZRef<CMapLoadable::REFLECTION_INFO>> m_lpRefInfo;
-	ZList<ZRef<CMapLoadable::VISIBLE_BY_QUEST>> m_lVisibleByQuest;
-	ZMap<char const*, CMapLoadable::CHANGING_OBJECT, ZXString<char>> m_mNamedObj
-		//m_mTagedObj
-		//m_mlLayerBack
-		//m_lpLayerLetterBox
-		int m_nMagLevel_Obj;
-	int m_nMagLevel_Back;
-	RECT m_rcViewRange;
-	bool m_bSysOptTremble;
-	bool m_bMagLevelModifying;
-	ZArray<CMapLoadable::OBSTACLE_INFO> m_aObstacleInfo;
-	//m_tRestoreBgmVolume
-	int m_nRestoreBgmVolume;
-	bool m_bPlayHoldedBGM;
-	//m_tPlayHoldedBGM;
-
 	/*
 	00000000 CMapLoadable::OBSTACLE struc; (sizeof = 0x38, align = 0x4, copyof_3663)
 	00000000 baseclass_0     ZRefCounted ?
@@ -130,12 +100,12 @@ class CMapLoadable : CStage
 	00000024 bLastFrameUpdated dd ?
 	00000028 CMapLoadable::REFLECTION_INFO ends
 	*/
-	struct REFLECTION_INFO 
+	struct REFLECTION_INFO
 	{
-	   //pLayer
-	   //pOriginalCanvas
-	   //pAvatarCanvas
-	   //pRemoverCanvas
+		//pLayer
+		//pOriginalCanvas
+		//pAvatarCanvas
+		//pRemoverCanvas
 		RECT rcArea;
 		int Alpha;
 		bool bLastFrameUpdated;
@@ -168,7 +138,7 @@ class CMapLoadable : CStage
 	00000000 nState          dd ?
 	00000004 dwSN            dd ?
 	00000008 aState          ZArray<CMapLoadable::OBJECT_STATE> ?
-	0000000C CMapLoadable::CHANGING_OBJECT ends	
+	0000000C CMapLoadable::CHANGING_OBJECT ends
 	*/
 	struct CHANGING_OBJECT
 	{
@@ -176,4 +146,34 @@ class CMapLoadable : CStage
 		//dwSN
 		ZArray<CMapLoadable::OBJECT_STATE>
 	};
+
+	int m_nJukeBoxItemID;
+	//m_tNextMusic
+	bool m_bJukeBoxPlaying;
+	long m_unWeatherSoundCookie;
+	ZXString<unsigned short> m_sChangedBgmUOL;
+	//m_pPropFieldInfo
+	//m_pPropField
+	bool m_bField;
+	ZRef<CWvsPhysicalSpace2D> m_pSpace2D;
+	//m_lpLayerGen
+	//m_lpLayerObj
+	//m_lpLayerTransient
+	ZList<ZRef<CMapLoadable::OBSTACLE>> m_lpObstacle;
+	ZList<ZRef<CMapLoadable::REFLECTION_INFO>> m_lpRefInfo;
+	ZList<ZRef<CMapLoadable::VISIBLE_BY_QUEST>> m_lVisibleByQuest;
+	ZMap<char const*, CMapLoadable::CHANGING_OBJECT, ZXString<char>> m_mNamedObj
+	//m_mTagedObj
+	//m_mlLayerBack
+	//m_lpLayerLetterBox
+	int m_nMagLevel_Obj;
+	int m_nMagLevel_Back;
+	RECT m_rcViewRange;
+	bool m_bSysOptTremble;
+	bool m_bMagLevelModifying;
+	ZArray<CMapLoadable::OBSTACLE_INFO> m_aObstacleInfo;
+	//m_tRestoreBgmVolume
+	int m_nRestoreBgmVolume;
+	bool m_bPlayHoldedBGM;
+	//m_tPlayHoldedBGM;
 };

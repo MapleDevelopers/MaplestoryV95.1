@@ -82,6 +82,22 @@
 */
 class CLogin : CMapLoadable
 {
+	/*
+	00000000 CLogin::RANK    struc; (sizeof = 0x10, align = 0x4, copyof_4908)
+	00000000 nWorldRank      dd ?
+	00000004 nWorldRankGap   dd ?
+	00000008 nJobRank        dd ?
+	0000000C nJobRankGap     dd ?
+	00000010 CLogin::RANK    ends
+	*/
+	struct RANK
+	{
+		int nWorldRank;
+		int nWorldRankGap;
+		int nJobRank;
+		int nJobRankGap;
+	};
+
 	ZRef<CConnectionNoticeDlg> m_pConnectionDlg;
 	bool m_bIsWaitingVAC;
 	bool m_bIsVACDlgOn;
