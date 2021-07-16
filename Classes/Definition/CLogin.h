@@ -2,6 +2,7 @@
 #include "CMapLoadable.h"
 #include "AvatarData.h"
 #include "COutPacket.h"
+#include "ZFatalSection.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)
@@ -100,6 +101,62 @@ class CLogin : CMapLoadable
 		int nJobRankGap;
 	};
 
+	/*
+	00000000 CLogin::CHANNELITEM struc ; (sizeof=0x14, align=0x4, copyof_4904)
+	00000000 sName           ZXString<char> ?
+	00000004 nUserNo         dd ?
+	00000008 nWorldID        dd ?
+	0000000C nChannelID      dd ?
+	00000010 bAdultChannel   dd ?
+	00000014 CLogin::CHANNELITEM ends
+	*/
+	struct CHANNELITEM
+	{
+		ZXString<char> sName;
+		int nUserNo;
+		int nWorldID;
+		int nChannelID;
+		bool bAdultChannel;
+	};
+
+	/*
+	00000000 CLogin::WORLDITEM struc; (sizeof = 0x20, align = 0x4, copyof_4906)
+	00000000 nWorldID        dd ?
+	00000004 sName           ZXString<char> ?
+	00000008 nWorldState     dd ?
+	0000000C sWorldEventDesc ZXString<char> ?
+	00000010 nWorldEventEXP_WSE dd ?
+	00000014 nWorldEventDrop_WSE dd ?
+	00000018 nBlockCharCreation dd ?
+	0000001C ci              ZArray<CLogin::CHANNELITEM> ?
+	00000020 CLogin::WORLDITEM ends
+	*/
+	struct WORLDITEM
+	{
+		int nWorldID;
+		ZXString<char> sName;
+		int nWorldState;
+		ZXString<char> sWorldEventDesc;
+		int nWorldEventEXP_WSE;
+		int nWorldEventDrop_WSE;
+		int nBlockCharCreation;
+		ZArray<CLogin::CHANNELITEM> ci;
+	};
+
+	/*
+	00000000 CLogin::NEWEQUIP struc; (sizeof = 0xC, align = 0x4, copyof_4907)
+	00000000 nGender         dd ?
+	00000004 nType           dd ?
+	00000008 nItemId         dd ?
+	0000000C CLogin::NEWEQUIP ends
+	*/
+	struct NEWEQUIP
+	{
+		int nGender;
+		int nType;
+		int nItemId;
+	};
+
 	ZRef<CConnectionNoticeDlg> m_pConnectionDlg;
 	bool m_bIsWaitingVAC;
 	bool m_bIsVACDlgOn;
@@ -113,7 +170,32 @@ class CLogin : CMapLoadable
 	ZArray<unsigned long> m_adwCharacterID;
 	ZArray<ZXString<char>> m_asCharacterName;
 	ZArray<long> m_anWorldID;
-
+	ZFatalSection m_lock_Avatar;
+	ZFatalSection m_lock_CountSvr;
+	ZFatalSection m_lock_Character;
+	//m_pLayerBook
+	int m_nFadeOutLoginStep;
+	//m_tStartFadeOut
+	int m_nLoginStep;
+	//m_tStepChanging
+	int m_bRequestSent;
+	bool m_bLoginOpt;
+	unsigned int Unknown1;
+	unsigned int Unknown2;
+	unsigned int Unknown3;
+	bool m_bQuerySSNOnCreateNewCharacter;
+	int m_nSlotCount;
+	int m_nBuyCharCount;
+	int m_nBaseStep;
+	bool m_bTerminate;
+	void* m_pFocusedUI;
+	ZArray<CLogin::WORLDITEM> m_WorldItem;
+	int m_nCharSelected;
+	ZArray<AvatarData> m_aAvatarData;
+	ZArray<CLogin::RANK> m_aRank;
+	ZArray<int> m_abOnFamily;
+	ZList<CLogin::NEWEQUIP> m_lNewEquip;
+	int m_nRegStatID;
 
 	public:
 		 void CLogin::SendRequest(CLogin*, COutPacket* oPacket)

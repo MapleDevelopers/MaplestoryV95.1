@@ -124,13 +124,19 @@ class CMapLoadable : CStage
 	};
 
 	/*
-	00000000 ZArray<CMapLoadable::OBJECT_STATE> struc; (sizeof = 0x4, align = 0x4, copyof_3665)
-	00000000 a               dd ? ; offset
-	00000004 ZArray<CMapLoadable::OBJECT_STATE> ends
+	00000000 CMapLoadable::OBJECT_STATE struc ; (sizeof=0x10, align=0x4, copyof_3664)
+	00000000 nRepeat         dd ?
+	00000004 bsSfx           Ztl_bstr_t ?
+	00000008 pLayer          _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+	0000000C bRestartMoving  dd ?
+	00000010 CMapLoadable::OBJECT_STATE ends
 	*/
 	struct OBJECT_STATE
 	{
-		int a;
+		int nRepeat;
+		//Ztl_bstr_t bsSfx
+		//pLayer
+		bool bRestartMoving;
 	};
 
 	/*
