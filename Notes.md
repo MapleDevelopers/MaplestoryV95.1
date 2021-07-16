@@ -1,6 +1,7 @@
 # Structure varible prefixes
-m_n = integer
-m_un = unsigned integer
+m_n = int
+m_dw = unsigned int
+m_un = ??
 m_b = bool
 m_s = string
 m_rc = rect

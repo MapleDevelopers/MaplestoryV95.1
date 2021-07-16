@@ -1,10 +1,10 @@
 #pragma once
+#include "CStage.h"
 #include "../Types/ZXString.h"
 #include "../Types/ZList.h"
 #include "../Types/ZArray.h"
 #include "../Types/ZRef.h"
 #include "../Types/ZMap.h"
-#include "../Structures/CStage.h"
 #include "../Structures/Rect.h"
 #include "../Structures/Point.h"
 
@@ -71,7 +71,7 @@ class CMapLoadable : CStage
 		int nSLV;
 		int nForceHP;
 		ZXString<char> sName;
-		//dwTargetField;
+		unsigned int dwTargetField;
 		bool bSafeZoneByMob;
 	};
 
@@ -143,8 +143,8 @@ class CMapLoadable : CStage
 	struct CHANGING_OBJECT
 	{
 		int nState;
-		//dwSN
-		ZArray<CMapLoadable::OBJECT_STATE>
+		unsigned int dwSN;
+		ZArray<CMapLoadable::OBJECT_STATE>;
 	};
 
 	int m_nJukeBoxItemID;
@@ -162,7 +162,7 @@ class CMapLoadable : CStage
 	ZList<ZRef<CMapLoadable::OBSTACLE>> m_lpObstacle;
 	ZList<ZRef<CMapLoadable::REFLECTION_INFO>> m_lpRefInfo;
 	ZList<ZRef<CMapLoadable::VISIBLE_BY_QUEST>> m_lVisibleByQuest;
-	ZMap<char const*, CMapLoadable::CHANGING_OBJECT, ZXString<char>> m_mNamedObj
+	ZMap<char const*, CMapLoadable::CHANGING_OBJECT, ZXString<char>> m_mNamedObj;
 	//m_mTagedObj
 	//m_mlLayerBack
 	//m_lpLayerLetterBox
