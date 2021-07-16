@@ -2,6 +2,8 @@
 #include "../Interfaces/Definition/IGObj.h"
 #include "../Interfaces/Definition/IUIMsgHandler.h"
 #include "ZRefCounted.h"
+#include "Rect.h"
+#include "Secpoint.h"
 
 /*
 00000000 CWnd            struc; (sizeof = 0x80, align = 0x4, copyof_1443)
@@ -27,4 +29,46 @@
 */
 class CWnd : IGObj, IUIMsgHandler, ZRefCounted
 {
+	/*
+	FFFFFFFF ; enum CWnd::UIOrigin, copyof_38
+	FFFFFFFF Origin_LT        = 0
+	FFFFFFFF Origin_CT        = 1
+	FFFFFFFF Origin_RT        = 2
+	FFFFFFFF Origin_LC        = 3
+	FFFFFFFF Origin_CC        = 4
+	FFFFFFFF Origin_RC        = 5
+	FFFFFFFF Origin_LB        = 6
+	FFFFFFFF Origin_CB        = 7
+	FFFFFFFF Origin_RB        = 8
+	FFFFFFFF Origin_NUM       = 9
+	*/
+	enum UIOrigin
+	{
+		Origin_LT = 0,
+		Origin_CT = 1,
+		Origin_RT = 2,
+		Origin_LC = 3,
+		Origin_CC = 4,
+		Origin_RC = 5,
+		Origin_LB = 6,
+		Origin_CB = 7,
+		Origin_RB = 8,
+		Origin_NUM = 9
+	};
+
+	unsigned int m_dwWndKey;
+	//m_pLayer
+	//m_pAnimationLayer
+	//m_pOverlabLayer
+	//m_width
+	//m_height
+	RECT m_rcInvalidated;
+	bool m_bScreenCoord;
+	int m_nBackgrndX;
+	int m_nBackgrndY;
+	SECPOINT m_ptCursorRel;
+	ZList<ZRef<CCtrlWnd>> m_lpChildren;
+	void* m_pFocusChild;
+	//m_pBackgrnd
+	UIOrigin m_origin
 };

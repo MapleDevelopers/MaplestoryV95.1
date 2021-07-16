@@ -1,6 +1,7 @@
 #pragma once
 
-template <class T> class ZList
+template <class T> 
+class ZList
 {
     //ZListVtbl* vfptr;
 

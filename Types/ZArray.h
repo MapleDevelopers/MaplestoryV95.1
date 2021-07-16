@@ -1,6 +1,7 @@
 #pragma once
 
-template <class T> class ZArray
+template <class T> 
+class ZArray
 {
     public:
         T* a;

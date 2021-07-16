@@ -1,7 +1,8 @@
 #pragma once
 
 // Defines a reference - counted object containing a T value as payload.
-template <class T> class ZRef
+template <class T> 
+class ZRef
 {
 	unsigned int Unknown1;
 	T* p;
