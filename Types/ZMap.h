@@ -1,3 +1,5 @@
+#pragma once
+
 template <class key_type, class value_type, class pair_type = key_type>
 class ZMap
 {

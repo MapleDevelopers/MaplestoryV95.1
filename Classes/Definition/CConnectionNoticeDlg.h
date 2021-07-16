@@ -17,7 +17,7 @@
 class CConnectionNoticeDlg : CDialog
 {
 	unsigned int Unknown1;
-	ZRef<CLogin> m_pLogin;
+	CLogin* m_pLogin;
 	ZRef<CCtrlButton> m_pBtCancel;
 	//m_pLayerAnimationBar
 };
