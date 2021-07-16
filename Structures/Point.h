@@ -6,7 +6,6 @@
 00000004 y               dd ? 
 00000008 tagPOINT        ends
 */
-
 struct POINT // or a two-dimensional vector as understood by CMapLoadable::OBSTACLE_INFO->vecForce
 {
 	int x;

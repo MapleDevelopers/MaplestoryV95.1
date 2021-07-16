@@ -6,7 +6,6 @@
 00000004 high            dd ? 
 00000008 RANGE           ends
 */
-
 struct RANGE
 {
 	long low;

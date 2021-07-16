@@ -6,6 +6,7 @@
 00000004 _m_nRef         dd ?
 00000008 ZFatalSectionData ends
 */
+template <class T>
 struct ZFatalSectionData
 {
 	void* _m_pTIB;
@@ -17,6 +18,7 @@ struct ZFatalSectionData
 00000000 baseclass_0     ZFatalSectionData ?
 00000008 ZFatalSection   ends
 */
-struct ZFatalSection : ZFatalSectionData
+template <class T>
+struct ZFatalSection : ZFatalSectionData<T>
 {
 };

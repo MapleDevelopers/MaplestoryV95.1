@@ -160,7 +160,7 @@ class CLogin : CMapLoadable
 	ZRef<CConnectionNoticeDlg> m_pConnectionDlg;
 	bool m_bIsWaitingVAC;
 	bool m_bIsVACDlgOn;
-	//m_tSentTimeVACPacket
+	int m_tSentTimeVACPacket
 	int m_nCountRelatedSvrs;
 	int m_nCountCharacters;
 	int m_nCountDataReceivedCharacters;
@@ -170,14 +170,14 @@ class CLogin : CMapLoadable
 	ZArray<unsigned long> m_adwCharacterID;
 	ZArray<ZXString<char>> m_asCharacterName;
 	ZArray<long> m_anWorldID;
-	ZFatalSection m_lock_Avatar;
-	ZFatalSection m_lock_CountSvr;
-	ZFatalSection m_lock_Character;
+	ZFatalSection<void> m_lock_Avatar;
+	ZFatalSection<void> m_lock_CountSvr;
+	ZFatalSection<void> m_lock_Character;
 	//m_pLayerBook
 	int m_nFadeOutLoginStep;
-	//m_tStartFadeOut
+	int m_tStartFadeOut
 	int m_nLoginStep;
-	//m_tStepChanging
+	int m_tStepChanging
 	int m_bRequestSent;
 	bool m_bLoginOpt;
 	unsigned int Unknown1;
@@ -197,6 +197,5 @@ class CLogin : CMapLoadable
 	ZList<CLogin::NEWEQUIP> m_lNewEquip;
 	int m_nRegStatID;
 
-	public:
-		 void CLogin::SendRequest(CLogin*, COutPacket* oPacket)
+	void SendRequest(CLogin*, COutPacket* oPacket)
 };
