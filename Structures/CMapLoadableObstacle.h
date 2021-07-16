@@ -1,5 +1,6 @@
 #pragma once
 #include "../Types/ZrefCounted.h"
+#include "../Classes/Definition/ZXString.h"
 
 /*
 00000000 CMapLoadable::OBSTACLE struc; (sizeof = 0x38, align = 0x4, copyof_3663)
@@ -29,7 +30,7 @@ struct OBSTACLE
 	int nMobSkillID;
 	int nSLV;
 	int nForceHP;
-	int sName;
-	int dwTargetField;
-	int bSafeZoneByMob;
+	ZXString<char> sName;
+	//dwTargetField;
+	bool bSafeZoneByMob;
 };

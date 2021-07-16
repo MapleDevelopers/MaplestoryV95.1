@@ -1,6 +1,6 @@
 #pragma once
 #include "../Structures/CMapLoadable.h"
-#include "../Types/ZRef.h"
+#include "../Classes/Definition/ZRef.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)

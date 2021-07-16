@@ -1,5 +1,7 @@
 #pragma once
 #include "../Structures/CStage.h"
+#include "../Structures/Rect.h"
+#include "../Classes/Definition/ZXString.h"
 
 /*
 00000000 CMapLoadable    struc; (sizeof = 0x148, align = 0x4, copyof_3709)
@@ -39,4 +41,32 @@
 struct CMapLoadable {
 	CStage baseclass_0;
 	int m_nJukeBoxItemID;
+	//m_tNextMusic
+	bool m_bJukeBoxPlaying;
+	long m_unWeatherSoundCookie;
+	ZXString<unsigned short> m_sChangedBgmUOL;
+	//m_pPropFieldInfo
+	//m_pPropField
+	bool m_bField;
+	ZRef<CWvsPhysicalSpace2D> m_pSpace2D;
+	//m_lpLayerGen
+	//m_lpLayerObj
+	//m_lpLayerTransient
+	//m_lpObstacle
+	//m_lpRefInfo
+	//m_lVisibleByQuest
+	//m_mNamedObj
+	//m_mTagedObj
+	//m_mlLayerBack
+	//m_lpLayerLetterBox
+	int m_nMagLevel_Obj;
+	int m_nMagLevel_Back;
+	RECT m_rcViewRange;
+	bool m_bSysOptTremble;
+	bool m_bMagLevelModifying;
+	//m_aObstacleInfo
+	//m_tRestoreBgmVolume
+	int m_nRestoreBgmVolume;
+	bool m_bPlayHoldedBGM;
+	//m_tPlayHoldedBGM;
 };
