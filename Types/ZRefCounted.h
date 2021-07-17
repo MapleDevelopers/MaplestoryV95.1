@@ -1,5 +1,5 @@
 #pragma once
-#include "../Types/ZrefCountedVtbl.h"
+#include "ZrefCountedVtbl.h"
 
 /*
 00000000 ZRefCounted     struc; (sizeof = 0xC, align = 0x4, copyof_1415)

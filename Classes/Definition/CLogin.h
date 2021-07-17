@@ -6,6 +6,7 @@
 #include "CAvatar.h"
 #include "CUILoginStart.h"
 #include "CFadeWnd.h"
+#include "RecommendWorldMsg.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)
@@ -160,6 +161,32 @@ class CLogin : CMapLoadable
 		int nItemId;
 	};
 
+	/*
+	00000000 CLogin::BALLOON struc ; (sizeof=0xC, align=0x4, copyof_4909)
+	00000000 nX              dd ?
+	00000004 nY              dd ?
+	00000008 sMessage        ZXString<char> ?
+	0000000C CLogin::BALLOON ends
+	*/
+	struct BALLOON
+	{
+		int nX;
+		int nY;
+		ZXString<char> sMessage;
+	};
+
+	/*
+	00000000 CLogin::ASITEM  struc; (sizeof = 0x8, align = 0x4, copyof_4934)
+	00000000 nItemId         dd ?
+	00000004 sItemName       ZXString<char> ?
+	00000008 CLogin::ASITEM  ends
+	*/
+	struct ASITEM
+	{
+		int nItemId;
+		ZXString<char> sItemName;
+	};
+
 	ZRef<CConnectionNoticeDlg> m_pConnectionDlg;
 	bool m_bIsWaitingVAC;
 	bool m_bIsVACDlgOn;
@@ -211,6 +238,28 @@ class CLogin : CMapLoadable
 	ZRef<CDialog> m_pChildModal;
 	ZXString<char> m_sEventCharacterID;
 	int m_nBalloonCount;
+	ZArray<CLogin::BALLOON> m_aBalloon;
+	int m_nLatestConnectedWorldID;
+	ZArray<RECOMMENDWORLDMSG> m_aRecommendWorldMsg;
+	int m_nCurSelectedRace;
+	int m_nCurSelectedSubJob;
+	unsigned int Unknown7;
+	unsigned int Unknown8;
+	ZXString<char> m_aCmd[5];
+	int m_tFadeInRemain;
+	bool m_bNeedAgreement;
+	int m_nGender;
+	unsigned int Unknown9;
+	unsigned int Unknown10;
+	unsigned int Unknown11;
+	int m_nSubStep;
+	bool m_bSubStepChanged;
+	ZXString<char> m_sCheckedName;
+	ZArray<CLogin::ASITEM> m_aMaleItem[9];
+	ZArray<CLogin::ASITEM> m_aFemaleItem[9];
+	bool m_bCharSale;
+	int m_nCharSaleJob;
+	bool m_bCanHaveExtraChar;
 
 	void SendRequest(CLogin*, COutPacket* oPacket)
 };
