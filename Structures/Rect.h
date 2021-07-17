@@ -8,7 +8,6 @@
 0000000C bottom          dd ? 
 00000010 tagRECT         ends 
 */
-
 struct RECT
 {
 	int left;

@@ -1,6 +1,7 @@
 #pragma once
 #include "AvatarLook.h"
 #include "Ztl_bstr_t.h"
+#include "Secpoint.h"
 
 /*
 00000000 CAvatar         struc ; (sizeof=0x1940, align=0x4, copyof_1993)
@@ -78,10 +79,43 @@
 0000193C m_tLevitationLastUpdateTime dd ?
 00001940 CAvatar         ends
 */
-
 class CAvatar
 {
-	//vfptr to CAvatarVtbl
+	/*
+	00000000 CAvatar::ACTIONINFO struc; (sizeof = 0x974, align = 0x4, copyof_2020)
+	00000000 nCurFrameIndex  dd ?
+	00000004 tCurFrameRemain dd ?
+	00000008 tTotFrameDelay  dd ?
+	0000000C aFrameDelay     ZArray<long> ?
+	00000010 bCurFrameStop   dd ?
+	00000014 nCurTMFrameIndex dd ?
+	00000018 tCurTMFrameRemain dd ?
+	0000001C tTotTMFrameDelay dd ?
+	00000020 aTMFrameDelay   ZArray<long> ?
+	00000024 aaAction        ZArray < ZRef<CActionMan::CHARACTERACTIONFRAMEENTRY> > 273 dup(? )
+	00000468 aaTamingMobAction ZArray < ZRef<CActionMan::TAMINGMOBACTIONFRAMEENTRY> > 273 dup(? )
+	000008AC aaMorphAction   ZArray < ZRef<CActionMan::MORPHACTIONFRAMEENTRY> > 49 dup(? )
+	00000970 aSPAction       ZArray<ZList<ZRef<CActionMan::SHADOWPARTNERACTIONFRAMEENTRY> > > ?
+	00000974 CAvatar::ACTIONINFO ends
+	*/
+	struct ACTIONINFO
+	{
+		int nCurFrameIndex;
+		int tCurFrameRemain;
+		int tTotFrameDelay;
+		ZArray<long> aFrameDelay;
+		bool bCurFrameStop;
+		int nCurTMFrameIndex;
+		int tCurTMFrameRemain;
+		int tTotTMFrameDelay;
+		ZArray<long> aTMFrameDelay;
+		//aaAction
+		//aaTamingMobAction
+		//aaMorphAction
+		//aSPAction
+	};
+
+	//CAvatarVtbl* vfptr;
 	AvatarLook m_avatarLook;
 	AvatarLook m_avatarLookLast;
 	unsigned int Unknown1;
@@ -105,4 +139,37 @@ class CAvatar
 	bool m_bResetEmotion;
 	unsigned int m_dwMorphTemplateID;
 	RECT m_rcMorphBody;
+	int m_nGhostIndex;
+	int m_nMechanicMode;
+	bool m_bRocketBoosterStart;
+	bool m_bRocketBoosterLoop;
+	bool m_bForcedInvisible;
+	int m_nRidingVehicleID;
+	int m_nRidingChairID;
+	RECT m_rcTamingMobBody;
+	int m_nCharacterActionFrame;
+	SECPOINT m_ptBodyRelMove;
+	bool m_bTamingMobTired;
+	int m_nTamingMobOneTimeAction;
+	int m_nTamingMobAction;
+	bool m_bDelayedLoad;
+	int m_tAlertRemain;
+	int m_nMoveAction;
+	int m_nOneTimeAction;
+	ACTIONINFO m_aiAction;
+	int m_nDefaultEmotion;
+	int m_nChairHeight;
+	//Layers
+	// .
+	// .
+	// .
+	SECPOINT m_ptPos;
+	SECPOINT m_ptPosPrev;
+	int m_nScale;
+	bool m_bFlip;
+	short m_wLastDayOfWeek;
+	unsigned int Unknown3;
+	unsigned int Unknown4;
+	int m_tLevitationFlowTime;
+	int m_tLevitationLastUpdateTime;
 };
