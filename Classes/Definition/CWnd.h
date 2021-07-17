@@ -56,7 +56,7 @@ class CWnd : IGObj, IUIMsgHandler, ZRefCounted
 		Origin_NUM = 9
 	};
 
-	unsigned int m_dwWndKey;
+	unsigned long m_dwWndKey;
 	//m_pLayer
 	//m_pAnimationLayer
 	//m_pOverlabLayer

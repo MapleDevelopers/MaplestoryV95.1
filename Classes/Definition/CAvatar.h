@@ -137,7 +137,7 @@ class CAvatar
 	//_ZtlSecureTear_ m_nEmotion
 	//_ZtlSecureTear_ m_nEmotion_CS
 	bool m_bResetEmotion;
-	unsigned int m_dwMorphTemplateID;
+	unsigned long m_dwMorphTemplateID;
 	RECT m_rcMorphBody;
 	int m_nGhostIndex;
 	int m_nMechanicMode;

@@ -52,6 +52,6 @@ class CFadeWnd : CDialog
 	int m_nLevel;
 	int m_nJobCode;
 	int m_nExpQuestID;
-	unsigned int m_dwSN;
-	unsigned int m_dwFriendID;
+	unsigned long m_dwSN;
+	unsigned long m_dwFriendID;
 };
