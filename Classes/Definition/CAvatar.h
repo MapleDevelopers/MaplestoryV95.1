@@ -1,0 +1,108 @@
+#pragma once
+#include "AvatarLook.h"
+#include "Ztl_bstr_t.h"
+
+/*
+00000000 CAvatar         struc ; (sizeof=0x1940, align=0x4, copyof_1993)
+00000000 vfptr           dd ?                    ; offset
+00000004 m_avatarLook    AvatarLook ?
+00000209 m_avatarLookLast AvatarLook ?
+0000040E                 db ? ; undefined
+0000040F                 db ? ; undefined
+00000410 m_aAvatarHairEquipForced dd 60 dup(?)
+00000500 m_bForcingAppearance dd ?
+00000504 m_nWeaponItemID dd ?
+00000508 m_nSubWeaponItemID dd ?
+0000050C m_nShieldItemID dd ?
+00000510 m_nWalkType     dd ?
+00000514 m_nStandType    dd ?
+00000518 m_nAttackActionType dd ?
+0000051C _ZtlSecureTear_m_nWeaponAttackSpeed dd 2 dup(?)
+00000524 _ZtlSecureTear_m_nWeaponAttackSpeed_CS dd ?
+00000528 m_sWeaponAfterimage Ztl_bstr_t ?
+0000052C m_bBlinking     dd ?
+00000530 m_tNextBlink    dd ?
+00000534 m_tEmotionEnd   dd ?
+00000538 _ZtlSecureTear_m_nEmotion dd 2 dup(?)
+00000540 _ZtlSecureTear_m_nEmotion_CS dd ?
+00000544 m_bResetEmotion dd ?
+00000548 m_dwMorphTemplateID dd ?
+0000054C m_rcMorphBody   tagRECT ?
+0000055C m_nGhostIndex   dd ?
+00000560 m_nMechanicMode dd ?
+00000564 m_bRocketBoosterStart dd ?
+00000568 m_bRocketBoosterLoop dd ?
+0000056C m_bForcedInvisible dd ?
+00000570 m_nRidingVehicleID dd ?
+00000574 m_nRidingChairID dd ?
+00000578 m_rcTamingMobBody tagRECT ?
+00000588 m_nCharacterActionFrame dd ?
+0000058C m_ptBodyRelMove SECPOINT ?
+000005A4 m_bTamingMobTired dd ?
+000005A8 m_nTamingMobOneTimeAction dd ?
+000005AC m_nTamingMobAction dd ?
+000005B0 m_bDelayedLoad  dd ?
+000005B4 m_tAlertRemain  dd ?
+000005B8 m_nMoveAction   dd ?
+000005BC m_nOneTimeAction dd ?
+000005C0 m_aiAction      CAvatar::ACTIONINFO 2 dup(?)
+000018A8 m_nDefaultEmotion dd ?
+000018AC m_nChairHeight  dd ?
+000018B0 m_pRawOrigin    _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018B4 m_pOrigin       _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018B8 m_pFaceOrigin   _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018BC m_pBodyOrigin   _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018C0 m_pMuzzleOrigin _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018C4 m_pTMNavelOrigin _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018C8 m_pTMHeadOrigin _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018CC m_pTMMuzzleOrigin _com_ptr_t<_com_IIID<IWzVector2D,&_GUID_f28bd1ed_3deb_4f92_9eec_10ef5a1c3fb4> > ?
+000018D0 m_pLayerFace    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018D4 m_pLayerOverFace _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018D8 m_pLayerUnderFace _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018DC m_pLayerShadowPartner _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018E0 m_pLayerOverCharacter _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018E4 m_pLayerUnderCharacter _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018E8 m_pLayerOverlay _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018EC m_pLayerMuzzle  _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018F0 m_pLayerBarrier _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018F4 m_pLayerCyclone _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018F8 m_pLayerAR01    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+000018FC m_ptPos         SECPOINT ?
+00001914 m_ptPosPrev     SECPOINT ?
+0000192C m_nScale        dd ?
+00001930 m_bFlip         dd ?
+00001934 m_wLastDayOfWeek dw ?
+00001936                 db ? ; undefined
+00001937                 db ? ; undefined
+00001938 m_tLevitationFlowTime dd ?
+0000193C m_tLevitationLastUpdateTime dd ?
+00001940 CAvatar         ends
+*/
+
+class CAvatar
+{
+	//vfptr to CAvatarVtbl
+	AvatarLook m_avatarLook;
+	AvatarLook m_avatarLookLast;
+	unsigned int Unknown1;
+	unsigned int Unknown2;
+	int m_aAvatarHairEquipForced[60];
+	bool m_bForcingAppearance;
+	int m_nWeaponItemID;
+	int m_nSubWeaponItemID;
+	int m_nShieldItemID;
+	int m_nWalkType;
+	int m_nStandType;
+	int m_nAttackActionType;
+	//_ZtlSecureTear_ m_nWeaponAttackSpeed
+	//_ZtlSecureTear_ m_nWeaponAttackSpeed_CS
+	Ztl_bstr_t m_sWeaponAfterimage;
+	bool m_bBlinking;
+	int m_tNextBlink;
+	int m_tEmotionEnd;
+	//_ZtlSecureTear_ m_nEmotion
+	//_ZtlSecureTear_ m_nEmotion_CS
+	bool m_bResetEmotion;
+	unsigned int m_dwMorphTemplateID;
+	RECT m_rcMorphBody;
+};

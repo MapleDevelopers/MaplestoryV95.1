@@ -5,6 +5,7 @@
 #include "ZArray.h"
 #include "ZRef.h"
 #include "ZMap.h"
+#include "Ztl_bstr_t.h"
 #include "Rect.h"
 #include "Point.h"
 
@@ -134,7 +135,7 @@ class CMapLoadable : CStage
 	struct OBJECT_STATE
 	{
 		int nRepeat;
-		//Ztl_bstr_t bsSfx
+		Ztl_bstr_t bsSfx;
 		//pLayer
 		bool bRestartMoving;
 	};
@@ -154,7 +155,7 @@ class CMapLoadable : CStage
 	};
 
 	int m_nJukeBoxItemID;
-	//m_tNextMusic
+	int m_tNextMusic;
 	bool m_bJukeBoxPlaying;
 	long m_unWeatherSoundCookie;
 	ZXString<unsigned short> m_sChangedBgmUOL;
@@ -178,8 +179,8 @@ class CMapLoadable : CStage
 	bool m_bSysOptTremble;
 	bool m_bMagLevelModifying;
 	ZArray<CMapLoadable::OBSTACLE_INFO> m_aObstacleInfo;
-	//m_tRestoreBgmVolume
+	int m_tRestoreBgmVolume;
 	int m_nRestoreBgmVolume;
 	bool m_bPlayHoldedBGM;
-	//m_tPlayHoldedBGM;
+	int m_tPlayHoldedBGM;
 };

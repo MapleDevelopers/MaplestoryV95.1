@@ -3,6 +3,7 @@
 #include "AvatarData.h"
 #include "COutPacket.h"
 #include "ZFatalSection.h"
+#include "CAvatar.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)
@@ -196,6 +197,13 @@ class CLogin : CMapLoadable
 	ZArray<int> m_abOnFamily;
 	ZList<CLogin::NEWEQUIP> m_lNewEquip;
 	int m_nRegStatID;
+	unsigned int Unknown4;
+	unsigned int Unknown5;
+	unsigned int Unknown6;
+	//m_pLayerLight
+	//m_pLayerDust
+	ZRef<CAvatar> m_pNewAvatar;
+	//ZRef<CUILoginStart> m_pLoginStart;
 
 	void SendRequest(CLogin*, COutPacket* oPacket)
 };
