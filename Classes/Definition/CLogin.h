@@ -4,6 +4,8 @@
 #include "COutPacket.h"
 #include "ZFatalSection.h"
 #include "CAvatar.h"
+#include "CUILoginStart.h"
+#include "CFadeWnd.h"
 
 /*
 00000000 CLogin          struc ; (sizeof=0x2C8, align=0x4, copyof_4913)
@@ -203,7 +205,12 @@ class CLogin : CMapLoadable
 	//m_pLayerLight
 	//m_pLayerDust
 	ZRef<CAvatar> m_pNewAvatar;
-	//ZRef<CUILoginStart> m_pLoginStart;
+	ZRef<CUILoginStart> m_pLoginStart;
+	ZRef<CFadeWnd> m_pLoginDesc0;
+	ZRef<CFadeWnd> m_pLoginDesc1;
+	ZRef<CDialog> m_pChildModal;
+	ZXString<char> m_sEventCharacterID;
+	int m_nBalloonCount;
 
 	void SendRequest(CLogin*, COutPacket* oPacket)
 };

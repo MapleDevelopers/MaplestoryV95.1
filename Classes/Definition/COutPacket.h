@@ -11,8 +11,8 @@
 */
 class COutPacket
 {
-	int m_bLoopback;
+	bool m_bLoopback;
 	ZArray<unsigned char> m_aSendBuff;
-	int m_uOffset;
-	int m_bIsEncryptedByShanda;
+	unsigned int m_uOffset;
+	bool m_bIsEncryptedByShanda;
 };

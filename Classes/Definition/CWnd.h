@@ -60,8 +60,8 @@ class CWnd : IGObj, IUIMsgHandler, ZRefCounted
 	//m_pLayer
 	//m_pAnimationLayer
 	//m_pOverlabLayer
-	//m_width
-	//m_height
+	int m_width;
+	int m_height;
 	RECT m_rcInvalidated;
 	bool m_bScreenCoord;
 	int m_nBackgrndX;
