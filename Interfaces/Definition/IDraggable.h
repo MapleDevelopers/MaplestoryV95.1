@@ -1,6 +1,6 @@
 #pragma once
 #include "ZRefCounted.h"
-
+#include "FunckeyMapped.h"
 /*
 00000000 IDraggable      struc; (sizeof = 0x18, align = 0x4, copyof_1424)
 00000000 baseclass_0     ZRefCounted ?
