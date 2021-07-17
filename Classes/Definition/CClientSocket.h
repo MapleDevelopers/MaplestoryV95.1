@@ -3,6 +3,11 @@
 #include "ZList.h"
 #include "ZRef.h"
 #include "ZFatalSection.h"
+#include "CInPacket.h"
+#include "COutPacket.h"
+#include "ZSocketBase.h"
+#include "ZInetAddr.h"
+#include "ZSocketBuffer.h"
 
 /*
 00000000 CClientSocket   struc; (sizeof = 0x94, align = 0x4, copyof_1893)
@@ -53,7 +58,7 @@ public:
 	unsigned int m_uSeqSnd;
 	unsigned int m_uSeqRcv;
 	ZXString<char> m_URLGuestIDRegistration;
-	int m_bIsGuestID;
+	bool m_bIsGuestID;
 
 	void ProcessPacket(CInPacket* packet);
 	void SendPacket(COutPacket* packet);
