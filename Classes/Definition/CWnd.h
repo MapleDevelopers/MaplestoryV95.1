@@ -70,5 +70,5 @@ class CWnd : IGObj, IUIMsgHandler, ZRefCounted
 	ZList<ZRef<CCtrlWnd>> m_lpChildren;
 	void* m_pFocusChild;
 	//m_pBackgrnd
-	UIOrigin m_origin
+	UIOrigin m_origin;
 };

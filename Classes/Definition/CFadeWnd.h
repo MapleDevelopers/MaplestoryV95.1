@@ -54,4 +54,6 @@ class CFadeWnd : CDialog
 	int m_nExpQuestID;
 	unsigned long m_dwSN;
 	unsigned long m_dwFriendID;
+
+	void SetOption(CFadeWnd* this, int a0, int a, int a1, POINT pt0, POINT pt, POINT pt1, int t0, int t, int t1);
 };

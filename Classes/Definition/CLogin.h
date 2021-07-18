@@ -205,7 +205,7 @@ class CLogin : CMapLoadable
 	ZFatalSection<void> m_lock_Character;
 	//m_pLayerBook
 	int m_nFadeOutLoginStep;
-	int m_tStartFadeOut
+	int m_tStartFadeOut;
 	int m_nLoginStep;
 	int m_tStepChanging
 	int m_bRequestSent;
@@ -261,5 +261,8 @@ class CLogin : CMapLoadable
 	int m_nCharSaleJob;
 	bool m_bCanHaveExtraChar;
 
-	void SendRequest(CLogin*, COutPacket* oPacket)
+	void SendRequest(CLogin*, COutPacket* oPacket);
+	void OnNewCharJobSel(CLogin*);
+	void OnNewCharJobSelCanceled(CLogin*);
+	void ExitGame(CLogin*, int bAsk, IUIMsgHandler* pFocus);
 };

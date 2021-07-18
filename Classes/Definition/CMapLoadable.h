@@ -87,7 +87,7 @@ class CMapLoadable : CStage
 	{
 		RECT rcObs;
 		POINT vecForce;
-		OBSTACLE* pObstacle
+		OBSTACLE* pObstacle;
 	};
 
 	/*
@@ -151,7 +151,7 @@ class CMapLoadable : CStage
 	{
 		int nState;
 		unsigned int dwSN;
-		ZArray<CMapLoadable::OBJECT_STATE>;
+		ZArray<CMapLoadable::OBJECT_STATE> aState;
 	};
 
 	int m_nJukeBoxItemID;
