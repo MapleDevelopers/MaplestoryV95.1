@@ -1,13 +1,8 @@
 #include "../Definition/CLogin.h"
-#include "../Definition/ClientSocket.h"
+#include "../Definition/CLoginUtilDlg.h"
+#include "../Definition/CClientSocket.h"
 #include "../Definition/CWndMan.h"
 #include "../Interfaces/Definition/IUIMsgHandler.h"
-
-void CLogin::SendRequest(CLogin* this, COutPacket* oPacket)
-{
-    CClientSocket::SendPacket(TSingleton<CClientSocket>::ms_pInstance, oPacket);
-	this->m_bRequestSent = 1;
-}
 
 void CLogin::OnNewCharJobSel(CLogin* this)
 {
@@ -19,6 +14,34 @@ void CLogin::OnNewCharJobSelCanceled(CLogin* this)
 {
 	this->m_nSubStep = 0;
 	this->m_bSubStepChanged = 1;
+}
+
+void CLogin::OnNewCharStep(CLogin* this, int bCharSale)
+{
+    this->m_bCharSale = bCharSale;
+    this->m_nCharSaleJob = 1;
+
+    if (!this->m_nLoginStep == 3)
+    {
+        if (this->m_WorldItem.a[*((_DWORD*)TSingleton<CWvsContext>::ms_pInstance._m_pStr + 2071)].nBlockCharCreation)
+        {
+            CLoginUtilDlg::Notice(36, 0);
+        }
+        else if (this->m_aAvatarData.a[this->m_nSlotCount - 1].characterStat.dwCharacterID)
+        {
+            CLoginUtilDlg::Error(9, &this->m_pChildModal);
+        }
+        else
+        {
+            CLogin::ChangeStep(this, -1);
+        }
+    }
+}
+
+void CLogin::SendRequest(CLogin* this, COutPacket* oPacket)
+{
+    CClientSocket::SendPacket(TSingleton<CClientSocket>::ms_pInstance, oPacket);
+	this->m_bRequestSent = 1;
 }
 
 void CLogin::ExitGame(CLogin* this, int bAsk, IUIMsgHandler* pFocus)

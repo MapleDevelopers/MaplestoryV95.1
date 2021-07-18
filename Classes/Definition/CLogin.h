@@ -261,8 +261,10 @@ class CLogin : CMapLoadable
 	int m_nCharSaleJob;
 	bool m_bCanHaveExtraChar;
 
-	void SendRequest(CLogin*, COutPacket* oPacket);
-	void OnNewCharJobSel(CLogin*);
-	void OnNewCharJobSelCanceled(CLogin*);
-	void ExitGame(CLogin*, int bAsk, IUIMsgHandler* pFocus);
+
+	void OnNewCharJobSel(CLogin* this);
+	void OnNewCharJobSelCanceled(CLogin* this);
+	void OnNewCharStep(CLogin* this, int bCharSale);
+	void SendRequest(CLogin* this, COutPacket* oPacket);
+	void ExitGame(CLogin* this, int bAsk, IUIMsgHandler* pFocus);
 };

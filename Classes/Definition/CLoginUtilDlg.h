@@ -34,7 +34,8 @@ class CLoginUtilDlg : CFadeWnd
 	//m_pLayerScroll
 	ZXString<unsigned short> m_sScrollNotice;
 
-
-	void Init(CLoginUtilDlg*, int nType, int nMsg);
+	void Init(CLoginUtilDlg* this, int nType, int nMsg);
+	void Notice(int nMsg, ZRef<CDialog>* ppDialog);
+	void Error(int nMsg, ZRef<CDialog>* ppDialog);
 };
 

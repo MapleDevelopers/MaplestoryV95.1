@@ -1,5 +1,6 @@
 #pragma once
 #include "CDialog.h"
+#include "CCtrlButton.h"
 
 /*
 00000000 CUILoginStart   struc; (sizeof = 0x11C, align = 0x4, copyof_4926)
@@ -19,7 +20,7 @@ class CUILoginStart : CDialog
 	//m_pFont
 	//m_pCanvasChannelName
 	//m_aBtParam[5]
-	//m_apButton[5]
+	ZRef<CCtrlButton> m_apButton[5]
 	int m_nViewWorldButtonType;
 	bool m_bRequestSent;
 };
