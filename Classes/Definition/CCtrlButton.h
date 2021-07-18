@@ -30,6 +30,22 @@
 */
 class CCtrlButton : CCtrlWnd
 {
+	/*
+	00000000 CCtrlButton::CREATEPARAM struc ; (sizeof=0x10, align=0x4, copyof_1685)
+	00000000 bAcceptFocus    dd ?
+	00000004 bDrawBack       dd ?
+	00000008 bAnimateOnce    dd ?
+	0000000C sUOL            ZXString<unsigned short> ?
+	00000010 CCtrlButton::CREATEPARAM ends
+	*/
+	struct CREATEPARAM
+	{
+		bool bAcceptFocus;
+		bool bDrawBack;
+		bool bAnimateOnce;
+		ZXString<unsigned short> sUOL;
+	};
+
 	int m_nDisplayState;
 	int m_nDisplayFrame;
 	int m_nAniCount;

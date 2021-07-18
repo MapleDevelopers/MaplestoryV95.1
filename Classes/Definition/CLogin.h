@@ -266,5 +266,6 @@ class CLogin : CMapLoadable
 	void OnNewCharJobSelCanceled(CLogin* this);
 	void OnNewCharStep(CLogin* this, int bCharSale);
 	void SendRequest(CLogin* this, COutPacket* oPacket);
+	void CloseChannelSelect(CLogin* this);
 	void ExitGame(CLogin* this, int bAsk, IUIMsgHandler* pFocus);
 };

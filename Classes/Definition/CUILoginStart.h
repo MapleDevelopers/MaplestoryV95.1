@@ -19,8 +19,8 @@ class CUILoginStart : CDialog
 	unsigned int* m_pLogin;
 	//m_pFont
 	//m_pCanvasChannelName
-	//m_aBtParam[5]
-	ZRef<CCtrlButton> m_apButton[5]
+	CCtrlButton::CREATEPARAM m_aBtParam[5];
+	ZRef<CCtrlButton> m_apButton[5];
 	int m_nViewWorldButtonType;
 	bool m_bRequestSent;
 };

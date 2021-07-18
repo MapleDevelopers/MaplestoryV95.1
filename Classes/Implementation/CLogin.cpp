@@ -2,6 +2,7 @@
 #include "../Definition/CLoginUtilDlg.h"
 #include "../Definition/CClientSocket.h"
 #include "../Definition/CWndMan.h"
+#include "../Definition/CUIChannelSelect.h"
 #include "../Interfaces/Definition/IUIMsgHandler.h"
 
 void CLogin::OnNewCharJobSel(CLogin* this)
@@ -42,6 +43,23 @@ void CLogin::SendRequest(CLogin* this, COutPacket* oPacket)
 {
     CClientSocket::SendPacket(TSingleton<CClientSocket>::ms_pInstance, oPacket);
 	this->m_bRequestSent = 1;
+}
+
+void CLogin::CloseChannelSelect(CLogin* this)
+{
+    if (TSingleton<CUIChannelSelect>::ms_pInstance)
+        CFadeWnd::Close(TSingleton<CUIChannelSelect>::ms_pInstance, 0);
+    if (TSingleton<CUIWorldSelect>::ms_pInstance)
+    {
+        CUIWorldSelect::EnableButtons(TSingleton<CUIWorldSelect>::ms_pInstance, -1);
+        if (TSingleton<CWndMan>::ms_pInstance)
+        {
+            if (TSingleton<CUIWorldSelect>::ms_pInstance)
+                CWndMan::SetFocus(TSingleton<CWndMan>::ms_pInstance, &TSingleton<CUIWorldSelect>::ms_pInstance->IUIMsgHandler);
+            else
+                CWndMan::SetFocus(TSingleton<CWndMan>::ms_pInstance, 0);
+        }
+    }
 }
 
 void CLogin::ExitGame(CLogin* this, int bAsk, IUIMsgHandler* pFocus)

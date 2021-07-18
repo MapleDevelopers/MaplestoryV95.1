@@ -60,7 +60,7 @@ public:
 	ZXString<char> m_URLGuestIDRegistration;
 	bool m_bIsGuestID;
 
-	void ProcessPacket(CInPacket* packet);
-	void SendPacket(COutPacket* packet);
-	void Flush();
+	void ProcessPacket(CClientSocket* this, CInPacket* iPacket);
+	void SendPacket(CClientSocket* this, int a2, const COutPacket* oPacket);
+	void Flush(CClientSocket* this);
 };
