@@ -1,6 +1,8 @@
 #pragma once
 #include "CWnd.h"
 #include "CUIWnd.h"
+#include "Secpoint.h"
+#include "Dragctx.h"
 
 /*
 00000000 CWndMan         struc; (sizeof = 0x13C, align = 0x4, copyof_3402)

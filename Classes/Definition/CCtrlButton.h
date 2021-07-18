@@ -30,4 +30,26 @@
 */
 class CCtrlButton : CCtrlWnd
 {
+	int m_nDisplayState;
+	int m_nDisplayFrame;
+	int m_nAniCount;
+	int m_nAniDelay;
+	unsigned int m_dwDisplayStarted;
+	bool m_bMouseEnter;
+	int m_nDecClickArea;
+	bool m_bPressed;
+	bool m_bPressedByKey;
+	bool m_bKeyFocused;
+	bool m_bDrawBack;
+	bool m_bAnimateOnce;
+	//m_pPropFocusFrame
+	//m_pLayerFocusFrame
+	//m_apPropButton
+	bool m_bToolTip;
+	bool m_bToolTipUpDir;
+	ZXString<char> m_sToolTipTitle;
+	ZXString<char> m_sToolTipDesc;
+	CUIToolTip m_uiToolTip;
+	ZXString<char> m_sToolTipFromData;
+	bool m_bSelfDisable;
 };

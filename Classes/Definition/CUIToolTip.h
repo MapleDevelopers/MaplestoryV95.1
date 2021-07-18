@@ -54,8 +54,50 @@
 00000A44 m_bIngoreWeddingInfo dd ?
 00000A48 CUIToolTip      ends
 */
-
 class CUIToolTip
 {
+	/*
+	00000000 CUIToolTip::CLineInfo struc; (sizeof = 0x24, align = 0x4, copyof_1537)
+	00000000 m_nWidth        dd ?
+	00000004 m_nHeight       dd ?
+	00000008 m_nType         dd ?
+	0000000C m_sContext      ZXString<char> ?
+	00000010 m_nAlign        dd ?
+	00000014 m_bMulti        dd ?
+	00000018 m_nSubType      dd ?
+	0000001C m_sSubContext   ZXString<char> ?
+	00000020 m_bUseDotImage  dd ?
+	00000024 CUIToolTip::CLineInfo ends
+	*/
+	struct CLineInfo
+	{
+		int m_nHeight;
+		int m_nWidth;
+		int m_nType;
+		ZXString<char> m_sContext;
+		int m_nAlign;
+		bool m_bMulti;
+		int m_nSubType;
+		ZXString<char> m_sSubContext;
+		bool m_bUseDotImage;
+	};
 
+	//vfptr
+	int m_nToolTipType;
+	int m_nHeight;
+	int m_nWidth;
+	//m_pLayer
+	//m_pLayerAdditional
+	int m_nLastX;
+	int m_nLastY;
+	int m_nLineNo;
+	CUIToolTip::CLineInfo  m_aLineInfo[32];
+	int m_nLineSeparated;
+	int m_nOptionLineNo;
+	CUIToolTip::CLineInfo  m_aOptionLineInfo[32];
+	// Fonts, Canvas, Property 
+	// .
+	// .
+	// .
+	bool m_bIngoreWeddingInfo;
 };
