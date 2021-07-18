@@ -3,7 +3,9 @@
 #include "../Definition/CClientSocket.h"
 #include "../Definition/CWndMan.h"
 #include "../Definition/CUIChannelSelect.h"
+#include "../Definition/CUIWorldSelect.h"
 #include "../Interfaces/Definition/IUIMsgHandler.h"
+#include "../Types/TSingleton.h"
 
 void CLogin::OnNewCharJobSel(CLogin* this)
 {

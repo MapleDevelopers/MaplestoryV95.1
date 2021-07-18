@@ -12,3 +12,9 @@ void CFadeWnd::SetOption(CFadeWnd* this, int a0, int a, int a1, POINT pt0, POINT
 	this->m_t = t;
 	this->m_t1 = t1;
 }
+
+void CFadeWnd::Close(CFadeWnd* this, int bOK)
+{
+	this->m_bClose = 1;
+	this->m_bOK = bOK;
+}

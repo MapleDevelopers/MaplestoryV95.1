@@ -3,6 +3,7 @@
 #include "CUIWnd.h"
 #include "Secpoint.h"
 #include "Dragctx.h"
+#include "../Interfaces/Definition/IUIMsgHandler.h"
 
 /*
 00000000 CWndMan         struc; (sizeof = 0x13C, align = 0x4, copyof_3402)
@@ -59,4 +60,6 @@ class CWndMan : CWnd
 	bool m_bWndAttachEnabled;
 	//m_pOrgWindow
 	ZList<CUIWnd*> m_lUIWnd;
+
+	void SetFocus(CWndMan* this, IUIMsgHandler* pHandler);
 };

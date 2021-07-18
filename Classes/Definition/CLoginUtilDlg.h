@@ -37,6 +37,7 @@ class CLoginUtilDlg : CFadeWnd
 	void Init(CLoginUtilDlg* this, int nType, int nMsg);
 	void Notice(int nMsg, ZRef<CDialog>* ppDialog);
 	void Error(int nMsg, ZRef<CDialog>* ppDialog);
-	CCtrlWnd** HitTest(CLoginUtilDlg* this, int rx, int ry, CCtrlWnd** ppCtrl)
+	CCtrlWnd** HitTest(CLoginUtilDlg* this, int rx, int ry, CCtrlWnd** ppCtrl);
+	int YesNo(int nMsg, ZRef<CDialog>* ppDialog);
 };
 

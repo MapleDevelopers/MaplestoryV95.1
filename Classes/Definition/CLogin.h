@@ -268,4 +268,5 @@ class CLogin : CMapLoadable
 	void SendRequest(CLogin* this, COutPacket* oPacket);
 	void CloseChannelSelect(CLogin* this);
 	void ExitGame(CLogin* this, int bAsk, IUIMsgHandler* pFocus);
+	void ChangeStep(CLogin* this, int nStep);
 };
