@@ -5,5 +5,5 @@ class IGObj
 	~IGObj() = default;
 
 public:
-	virtual void Update();
+	virtual void Update(IGObj* this);
 };

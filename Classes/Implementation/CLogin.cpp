@@ -51,6 +51,7 @@ void CLogin::CloseChannelSelect(CLogin* this)
 {
     if (TSingleton<CUIChannelSelect>::ms_pInstance)
         CFadeWnd::Close(TSingleton<CUIChannelSelect>::ms_pInstance, 0);
+
     if (TSingleton<CUIWorldSelect>::ms_pInstance)
     {
         CUIWorldSelect::EnableButtons(TSingleton<CUIWorldSelect>::ms_pInstance, -1);

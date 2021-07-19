@@ -23,12 +23,14 @@ public:
 	virtual bool IsEnabled() = 0;
 	virtual bool IsShown() = 0;
 
-	virtual int GetAbsLeft(IUIMsgHandler*) = 0;
-	virtual int GetAbsTop(IUIMsgHandler*) = 0;
-	virtual CRTTI GetRTTI(IUIMsgHandler*) = &IUIMsgHandler::ms_RTTI_IUIMsgHandler;
-	virtual CRTTI IsKindOf(IUIMsgHandler*, CRTTI* pRTTI);
-	virtual void ClearToolTip(IUIMsgHandler*) = 0;
-	virtual void OnIMEModeChange(IUIMsgHandler*, char cMode) = 0;
-	virtual void OnIMEResult(IUIMsgHandler*, const char* sComp) = 0;
-	virtual void OnIMEComp(IUIMsgHandler*, const char* sComp, ZArray<unsigned long>* adwCls, unsigned int nClsIdx, int nCursor, ZList<ZXString<char>>* lCand, int nBegin, int nPage, int nCur) = 0;
+	virtual int GetAbsLeft() = 0;
+	virtual int GetAbsTop() = 0;
+	virtual void ClearToolTip(IUIMsgHandler* this) = 0;
+
+	virtual CRTTI GetRTTI() = &IUIMsgHandler::ms_RTTI_IUIMsgHandler;
+	virtual CRTTI IsKindOf(CRTTI* pRTTI);
+
+	virtual void OnIMEModeChange(char cMode) = 0;
+	virtual void OnIMEResult(const char* sComp) = 0;
+	virtual void OnIMEComp(const char* sComp, ZArray<unsigned long>* adwCls, unsigned int nClsIdx, int nCursor, ZList<ZXString<char>>* lCand, int nBegin, int nPage, int nCur) = 0;
 };
