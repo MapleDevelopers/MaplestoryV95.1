@@ -41,6 +41,39 @@ void CLogin::OnNewCharStep(CLogin* this, int bCharSale)
     }
 }
 
+void CLogin::EnableLoginStartCtrl(CLogin* this, int nEnable)
+{
+    if (this->m_pLoginStart.p)
+        CUILoginStart::EnableLoginStartCtrl(this->m_pLoginStart.p, nEnable);
+}
+
+int CLogin::ConvertSelectedRaceToUIRace(CLogin* this)
+{
+    switch (this->m_nCurSelectedRace)
+    {
+        case 0:
+            this->m_nCurSelectedRace = 4;
+            break;
+        case 1:
+            this->m_nCurSelectedRace = 1;
+            break;
+        case 2:
+            this->m_nCurSelectedRace = 0;
+            break;
+        case 3:
+            this->m_nCurSelectedRace = 3;
+            break;
+        case 4:
+            this->m_nCurSelectedRace = 2;
+            break;
+
+        default:
+            return this->m_nCurSelectedRace;
+    }
+
+    return this->m_nCurSelectedRace;
+}
+
 void CLogin::SendRequest(CLogin* this, COutPacket* oPacket)
 {
     CClientSocket::SendPacket(TSingleton<CClientSocket>::ms_pInstance, oPacket);

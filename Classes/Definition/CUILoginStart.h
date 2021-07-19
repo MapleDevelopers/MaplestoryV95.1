@@ -23,4 +23,6 @@ class CUILoginStart : CDialog
 	ZRef<CCtrlButton> m_apButton[5];
 	int m_nViewWorldButtonType;
 	bool m_bRequestSent;
+
+	void EnableLoginStartCtrl(CUILoginStart* this, int nEnable);
 };

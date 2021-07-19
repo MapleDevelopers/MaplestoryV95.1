@@ -1,6 +1,7 @@
 #pragma once
 #include "ZRefCounted.h"
 #include "FunckeyMapped.h"
+#include "IUIMsgHandler.h"
 
 /*
 00000000 IDraggable      struc; (sizeof = 0x18, align = 0x4, copyof_1424)
@@ -19,4 +20,7 @@ class IDraggable : ZRefCounted
 	int Unknown1;
 	int Unknown2;
 	int Unknown3;
+
+	virtual int OnDoubleClicked(IDraggable* this) = 0;
+	virtual int OnDropped(IDraggable* this, IUIMsgHandler* pFrom, IUIMsgHandler* pTo, int rx, int ry) = 0;
 };

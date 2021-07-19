@@ -261,12 +261,13 @@ class CLogin : CMapLoadable
 	int m_nCharSaleJob;
 	bool m_bCanHaveExtraChar;
 
-
 	void OnNewCharJobSel(CLogin* this);
 	void OnNewCharJobSelCanceled(CLogin* this);
 	void OnNewCharStep(CLogin* this, int bCharSale);
+	int ConvertSelectedRaceToUIRace(CLogin* this);
 	void SendRequest(CLogin* this, COutPacket* oPacket);
 	void CloseChannelSelect(CLogin* this);
 	void ExitGame(CLogin* this, int bAsk, IUIMsgHandler* pFocus);
 	void ChangeStep(CLogin* this, int nStep);
+	void EnableLoginStartCtrl(CLogin* this, int nEnable);
 };
