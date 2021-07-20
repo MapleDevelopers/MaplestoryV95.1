@@ -1,5 +1,7 @@
 #pragma once
 #include "IWzSerialize.h"
+#include "Ztl_variant_t.h"
+#include "Canvas_AlphaType.h"
 
 /*
 00000000 IWzCanvas       struc ; (sizeof=0x4, align=0x4, copyof_1446)

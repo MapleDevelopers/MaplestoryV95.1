@@ -2,7 +2,7 @@
 #include "IWzSerialize.h"
 #include "IUnknown.h"
 #include "Ztl_bstr_t.h"
-//#include "Ztl_variant_t.h"
+#include "Ztl_variant_t.h"
 
 /*
 00000000 IWzProperty     struc; (sizeof = 0x4, align = 0x4, copyof_1523)
