@@ -1,5 +1,5 @@
 #pragma once
-#include "CChatBalloonVtbl.h
+#include "CChatBalloonVtbl.h"
 
 /*
 00000000 CChatBalloon    struc ; (sizeof=0x68, align=0x4, copyof_1990)

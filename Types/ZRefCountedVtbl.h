@@ -15,7 +15,6 @@ void vector_deleting_destructor(A* pa, size_t count)
 00000000 __vecDelDtor    dd ? ; offset
 00000004 ZRefCountedVtbl ends
 */
-
 struct ZRefCountedVtbl
 {
 	void* __vecDelDtor;
