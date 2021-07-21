@@ -34,4 +34,49 @@
 */
 class CCtrlEdit : CCtrlWnd
 {
+	/*
+	00000000 CCtrlEdit::CEditCaret struc ; (sizeof=0x18, align=0x4, copyof_1543)
+	00000000                                         ; XREF: CCtrlEdit/r
+	00000000 m_l             dd ?
+	00000004 m_t             dd ?
+	00000008 m_dwLastSet     dd ?
+	0000000C m_bInit         dd ?
+	00000010 m_height        dd ?
+	00000014 m_pLayerCaret   _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+	00000018 CCtrlEdit::CEditCaret ends
+	*/
+	struct CEditCaret
+	{
+		int m_l;
+		int m_t;
+		unsigned long m_dwLastSet;
+		int m_height;
+		//m_pLayerCaret
+	};
+
+	ZXString<char> m_sText;
+	POINT m_ptText;
+	POINT m_ptCaret;
+	int m_col;
+	int m_ext;
+	ZArray<unsigned long> m_adwIMECompClause;
+	int m_nCurClause;
+	int m_nCaretX;
+	int m_selCol;
+	int m_nViewportX;
+	int m_nViewportWidth;
+	//m_pFont
+	//m_pFontDisabled
+	//m_pFontSel
+	//m_pFontCand
+	//m_pFontCandSel
+	int m_nFontHeight;
+	int m_nBackColor;
+	bool m_bPasswd;
+	bool m_bReadOnly;
+	int m_nHorzMax;
+	bool m_bNumber;
+	//m_pCanvasEmptyText
+	CCtrlEdit::CEditCaret m_editCaret;
+	void* m_pParentComboBox;
 };

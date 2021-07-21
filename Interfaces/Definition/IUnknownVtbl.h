@@ -9,4 +9,7 @@
 */
 struct IUnknownVtbl
 {
+	void* QueryInterface;
+	void* AddRef;
+	void* Release;
 };
