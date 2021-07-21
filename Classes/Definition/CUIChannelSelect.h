@@ -24,10 +24,10 @@
 */
 class CUIChannelSelect : CFadeWnd
 {
-	unsigned int* m_pLogin;
+	void* m_pLogin;
 	int m_nUserPopulation;
 	int m_nSelect;
-	unsigned int* m_pWorldItem;
+	void* m_pWorldItem;
 	//m_pCanvasWorldName
 	//m_pCanvasGauge
 	//m_pLayerSelect

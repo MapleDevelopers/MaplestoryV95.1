@@ -7,5 +7,5 @@
 */
 struct CActionManVtbl
 {
-	unsigned int* __vecDelDtor;
+	void* __vecDelDtor;
 };

@@ -26,7 +26,7 @@
 class CUIWorldSelect : CDialog
 {
 	int gap90;
-	unsigned int* m_pLogin;
+	void* m_pLogin;
 	int m_nWorld;
 	int m_nKeyFocus;
 	ZRef<CCtrlButton> m_pBtWS[36];

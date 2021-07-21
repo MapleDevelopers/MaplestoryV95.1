@@ -17,7 +17,7 @@
 */
 class CUINewCharAvatarSelect : CWnd
 {
-	unsigned int* m_pLogin;
+	void* m_pLogin;
 	ZRef<CCtrlButton> m_pBtLeft[9];
 	ZRef<CCtrlButton> m_pBtRight[9];
 	ZRef<CCtrlButton> m_pBtYes;

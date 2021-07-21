@@ -10,6 +10,6 @@
 */
 struct DRAGCTX
 {
-	unsigned int* pContainer;
+	void* pContainer;
 	ZRef<IDraggable> pObj;
 };

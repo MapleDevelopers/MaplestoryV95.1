@@ -18,7 +18,7 @@ void vector_deleting_destructor(A* pa, size_t count)
 
 struct ZRefCountedVtbl
 {
-	unsigned int* __vecDelDtor;
+	void* __vecDelDtor;
 };
 
 //ItemSlotBase related Vtbl

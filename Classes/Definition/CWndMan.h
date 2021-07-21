@@ -37,18 +37,18 @@
 class CWndMan : CWnd
 {
 	ZList<IUIMsgHandler*> m_lpCapture;
-	unsigned int* m_pActiveWnd;
-	unsigned int* m_pDragWnd;
+	void* m_pActiveWnd;
+	void* m_pDragWnd;
 	bool m_bDropByMouseUp;
-	unsigned int* m_pFocus;
-	unsigned int* m_pCursorHandler;
+	void* m_pFocus;
+	void* m_pCursorHandler;
 	DRAGCTX m_ctxDrag;
 	SECPOINT m_ptCursor;
 	int m_tLastScrShot;
 	int m_nScrShotCount;
-	unsigned int* m_hWnd;
-	unsigned int* m_hNewIMC;
-	unsigned int* m_hOldIMC;
+	void* m_hWnd;
+	void* m_hNewIMC;
+	void* m_hOldIMC;
 	unsigned long m_dwIMEProperty;
 	bool m_bIMEActive;
 	ZArray<unsigned char> m_abIMECompAttr;

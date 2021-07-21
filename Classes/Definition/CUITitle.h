@@ -23,7 +23,7 @@
 */
 class CUITitle : CFadeWnd
 {
-	unsigned int* m_pLogin;
+	void* m_pLogin;
 	bool m_bRememberMailAddr;
 	//m_pCanvasRMA
 	RECT m_rcRMA;

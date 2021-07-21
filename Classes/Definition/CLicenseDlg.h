@@ -25,7 +25,7 @@
 class CLicenseDlg : CDialog
 {
 	int gap90;
-	unsigned int* m_pLogin;
+	void* m_pLogin;
 	ZRef<CCtrlButton> m_pBtOK;
 	ZRef<CCtrlButton> m_pBtCancel;
 	ZRef<CCtrlScrollBar> m_pScrollBar;

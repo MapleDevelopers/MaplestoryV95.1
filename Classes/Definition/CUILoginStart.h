@@ -16,7 +16,7 @@
 */
 class CUILoginStart : CDialog
 {
-	unsigned int* m_pLogin;
+	void* m_pLogin;
 	//m_pFont
 	//m_pCanvasChannelName
 	CCtrlButton::CREATEPARAM m_aBtParam[5];

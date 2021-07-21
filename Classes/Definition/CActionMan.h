@@ -81,7 +81,7 @@ class CActionMan
 		int nStand;
 		int nAttack;
 		int tLastAccessed;
-		unsigned int* posMap;
+		void* posMap;
 		Ztl_bstr_t sSfx;
 		bool bWeekly;
 		//pWeeklyImg
@@ -102,8 +102,8 @@ class CActionMan
 		//lpEmotion
 		int tDuration;
 		int tLastAccessed;
-		unsigned int* posMap;
-		unsigned int* posList;
+		void* posMap;
+		void* posList;
 	};
 
 	/*
@@ -118,7 +118,7 @@ class CActionMan
 	{
 		//pImg
 		int tLastAccessed;
-		unsigned int* posMap;
+		void* posMap;
 	};
 
 	/*
@@ -155,8 +155,8 @@ class CActionMan
 		int nAction;
 		ZArray<ZRef<CActionMan::MORPHACTIONFRAMEENTRY>> apFE;
 		int tLastAccessed;
-		unsigned int* posMap;
-		unsigned int* posList;
+		void* posMap;
+		void* posList;
 	};
 
 	/*
@@ -171,7 +171,7 @@ class CActionMan
 	{
 		//pImg
 		int tLastAccessed;
-		unsigned int* posMap;
+		void* posMap;
 	};
 
 	/*
@@ -216,78 +216,275 @@ class CActionMan
 		int nAction;
 		ZArray<ZRef<CActionMan::MOBACTIONFRAMEENTRY>> apFE;
 		int tLastAccessed;
-		unsigned int* posMap;
-		unsigned int* posList;
+		void* posMap;
+		void* posList;
 	};
 
 	/*
-
+	00000000 CActionMan::MELEEATTACKAFTERIMAGE struc ; (sizeof=0x14, align=0x4, copyof_4158)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C aapCanvas       ZArray<ZArray<_com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e> > > > ?
+	00000010 arcRange        ZArray<SECRECT> ?
+	00000014 CActionMan::MELEEATTACKAFTERIMAGE ends
 	*/
 	struct MELEEATTACKAFTERIMAGE : ZRefCounted
 	{
+		//aapCanvas
+		ZArray<SECRECT> arcRange;
 	};
 
 	/*
-
+	00000000 CActionMan::NPCIMGENTRY struc ; (sizeof=0x18, align=0x4, copyof_4166)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pImg            _com_ptr_t<_com_IIID<IWzProperty,&_GUID_986515d9_0a0b_4929_8b4f_718682177b92> > ?
+	00000010 tLastAccessed   dd ?
+	00000014 posMap          dd ?                    ; offset
+	00000018 CActionMan::NPCIMGENTRY ends
 	*/
 	struct NPCIMGENTRY : ZRefCounted
 	{
+		//pImg
+		int tLastAccessed;
+		void* posMap;
 	};
 
 	/*
+	00000000 CActionMan::NPCACTIONFRAMEENTRY struc ; (sizeof=0x14, align=0x4, copyof_2388)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pCanvas         _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e> > ?
+	00000010 nDelay          dd ?
+	00000014 CActionMan::NPCACTIONFRAMEENTRY ends
+	*/
+	struct NPCACTIONFRAMEENTRY : ZRefCounted
+	{
+		//pCanvas
+		int nDelay;
+	};
 
+	/*
+	00000000 CActionMan::NPCACTIONENTRY struc ; (sizeof=0x34, align=0x4, copyof_4182)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C dwTemplateID    dd ?
+	00000010 nAction         dd ?
+	00000014 lpFrame         ZList<ZRef<CActionMan::NPCACTIONFRAMEENTRY> > ?
+	00000028 tLastAccessed   dd ?
+	0000002C posMap          dd ?                    ; offset
+	00000030 posList         dd ?                    ; offset
+	00000034 CActionMan::NPCACTIONENTRY ends
 	*/
 	struct NPCACTIONENTRY : ZRefCounted
 	{
+		unsigned long dwTemplateID;
+		int nAction;
+		ZList<ZRef<CActionMan::NPCACTIONFRAMEENTRY>> lpFrame;
+		int tLastAccessed;
+		void* posMap;
+		void* posList;
 	};
 
 	/*
-
+	00000000 CActionMan::PETIMGENTRY struc ; (sizeof=0x18, align=0x4, copyof_4198)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pImg            _com_ptr_t<_com_IIID<IWzProperty,&_GUID_986515d9_0a0b_4929_8b4f_718682177b92> > ?
+	00000010 tLastAccessed   dd ?
+	00000014 posMap          dd ?                    ; offset
+	00000018 CActionMan::PETIMGENTRY ends
 	*/
 	struct PETIMGENTRY : ZRefCounted
 	{
+		//pImg
+		int tLastAccessed;
+		void* posMap;
 	};
 
 	/*
+	00000000 CActionMan::PETACTIONFRAMEENTRY struc ; (sizeof=0x44, align=0x4, copyof_2049)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pCanvas         _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e> > ?
+	00000010 rcBody          SECRECT ?
+	00000040 nDelay          dd ?
+	00000044 CActionMan::PETACTIONFRAMEENTRY ends
+	*/
+	struct PETACTIONFRAMEENTRY : ZRefCounted
+	{
+		//pCanvas
+		SECRECT rcBody;
+		int nDelay;
+	};
 
+	/*
+	00000000 CActionMan::PETACTIONENTRY struc ; (sizeof=0x38, align=0x4, copyof_4214)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C dwTemplateID    dd ?
+	00000010 nAction         dd ?
+	00000014 bZigZag         dd ?
+	00000018 lpFrame         ZList<ZRef<CActionMan::PETACTIONFRAMEENTRY> > ?
+	0000002C tLastAccessed   dd ?
+	00000030 posMap          dd ?                    ; offset
+	00000034 posList         dd ?                    ; offset
+	00000038 CActionMan::PETACTIONENTRY ends
 	*/
 	struct PETACTIONENTRY : ZRefCounted
 	{
+		unsigned long dwTemplateID;
+		int nAction;
+		bool bZigZag;
+		ZList<ZRef<CActionMan::PETACTIONFRAMEENTRY>> lpFrame;
+		int tLastAccessed;
+		void* posMap;
+		void* posList;
 	};
 	
 	/*
-
+	00000000 CActionMan::EMPLOYEEIMGENTRY struc ; (sizeof=0x18, align=0x4, copyof_4230)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pImg            _com_ptr_t<_com_IIID<IWzProperty,&_GUID_986515d9_0a0b_4929_8b4f_718682177b92> > ?
+	00000010 tLastAccessed   dd ?
+	00000014 posMap          dd ?                    ; offset
+	00000018 CActionMan::EMPLOYEEIMGENTRY ends
 	*/
 	struct EMPLOYEEIMGENTRY : ZRefCounted
 	{
+		//pImg
+		int tLastAccessed;
+		void* posMap;
 	};
 
 	/*
+	00000000 CActionMan::EMPLOYEEACTIONFRAMEENTRY struc ; (sizeof=0x44, align=0x4, copyof_2417)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pCanvas         _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e> > ?
+	00000010 rcBody          SECRECT ?
+	00000040 nDelay          dd ?
+	00000044 CActionMan::EMPLOYEEACTIONFRAMEENTRY ends
+	*/
+	struct EMPLOYEEACTIONFRAMEENTRY : ZRefCounted
+	{
+		//pCanvas
+		SECRECT rcBody;
+		int nDelay;
+	};
 
+	/*
+	00000000 CActionMan::EMPLOYEEACTIONENTRY struc ; (sizeof=0x38, align=0x4, copyof_4246)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C dwTemplateID    dd ?
+	00000010 nAction         dd ?
+	00000014 bZigZag         dd ?
+	00000018 lpFrame         ZList<ZRef<CActionMan::EMPLOYEEACTIONFRAMEENTRY> > ?
+	0000002C tLastAccessed   dd ?
+	00000030 posMap          dd ?                    ; offset
+	00000034 posList         dd ?                    ; offset
+	00000038 CActionMan::EMPLOYEEACTIONENTRY ends
 	*/
 	struct EMPLOYEEACTIONENTRY : ZRefCounted
 	{
+		unsigned long dwTemplateID;
+		int nAction;
+		bool bZigZag;
+		ZList<ZRef<CActionMan::EMPLOYEEACTIONFRAMEENTRY>> lpFrame;
+		int tLastAccessed;
+		void* posMap;
+		void* posList;
 	};
 
 	/*
+	00000000 CActionMan::SUMMONEDACTIONFRAMEENTRY struc ; (sizeof=0x4C, align=0x4, copyof_2087)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pCanvas         _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e> > ?
+	00000010 rcBody          SECRECT ?
+	00000040 tDelay          dd ?
+	00000044 a0              dd ?
+	00000048 a1              dd ?
+	0000004C CActionMan::SUMMONEDACTIONFRAMEENTRY ends
+	*/
+	struct SUMMONEDACTIONFRAMEENTRY : ZRefCounted
+	{
+		//pCanvas
+		SECRECT rcBody;
+		int nDelay;
+		int a0;
+		int a1;
+	};
 
+	/*
+	00000000 CActionMan::SUMMONEDACTIONENTRY struc ; (sizeof=0x3C, align=0x4, copyof_4262)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C nSkillID        dd ?
+	00000010 nSLV            dd ?
+	00000014 nAction         dd ?
+	00000018 bZigZag         dd ?
+	0000001C lpFrame         ZList<ZRef<CActionMan::SUMMONEDACTIONFRAMEENTRY> > ?
+	00000030 tLastAccessed   dd ?
+	00000034 posMap          dd ?                    ; offset
+	00000038 posList         dd ?                    ; offset
+	0000003C CActionMan::SUMMONEDACTIONENTRY ends
 	*/
 	struct SUMMONEDACTIONENTRY : ZRefCounted
 	{
+		int nSkillID;
+		int nSLV;
+		int nAction;
+		bool bZigZag;
+		ZList<ZRef<CActionMan::SUMMONEDACTIONFRAMEENTRY>> lpFrame;
+		int tLastAccessed;
+		void* posMap;
+		void* posList;
 	};
 	
 	/*
-
+	00000000 CActionMan::SHADOWPARTNERACTIONFRAMEENTRY struc ; (sizeof=0x18, align=0x4, copyof_2017)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C pCanvas         _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e> > ?
+	00000010 a0              dd ?
+	00000014 a1              dd ?
+	00000018 CActionMan::SHADOWPARTNERACTIONFRAMEENTRY ends
 	*/
-	struct SHADOWPARTNERACTIONENTRY : ZRefCounted
+	struct SHADOWPARTNERACTIONFRAMEENTRY : ZRefCounted
 	{
+		//pCanvas
+		int a0;
+		int a1;
 	};
 
 	/*
+	00000000 CActionMan::SHADOWPARTNERACTIONENTRY struc ; (sizeof=0x38, align=0x4, copyof_4278)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C nSkillID        dd ?
+	00000010 nAction         dd ?
+	00000014 bZigZag         dd ?
+	00000018 lpFrame         ZList<ZRef<CActionMan::SHADOWPARTNERACTIONFRAMEENTRY> > ?
+	0000002C tLastAccessed   dd ?
+	00000030 posMap          dd ?                    ; offset
+	00000034 posList         dd ?                    ; offset
+	00000038 CActionMan::SHADOWPARTNERACTIONENTRY ends
+	*/
+	struct SHADOWPARTNERACTIONENTRY : ZRefCounted
+	{
+		int nSkillID;
+		int nAction;
+		bool bZigZag;
+		ZList<ZRef<CActionMan::SHADOWPARTNERACTIONFRAMEENTRY>> lpFrame;
+		int tLastAccessed;
+		void* posMap;
+		void* posList;
+	};
 
+	/*
+	00000000 CActionMan::DRAGONACTIONENTRY struc ; (sizeof=0x2C, align=0x4, copyof_4300)
+	00000000 baseclass_0     ZRefCounted ?
+	0000000C nAction         dd ?
+	00000010 bZigZag         dd ?
+	00000014 lpFrame         ZList<ZRef<CActionMan::SUMMONEDACTIONFRAMEENTRY> > ?
+	00000028 tLastAccessed   dd ?
+	0000002C CActionMan::DRAGONACTIONENTRY ends
 	*/
 	struct DRAGONACTIONENTRY : ZRefCounted
 	{
+		int nAction;
+		bool bZigZag;
+		ZList<ZRef<CActionMan::SUMMONEDACTIONFRAMEENTRY>> lpFrame;
+		int tLastAccessed;
 	};
 
 	CActionManVtbl* vfptr;

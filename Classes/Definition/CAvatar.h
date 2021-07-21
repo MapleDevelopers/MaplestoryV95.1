@@ -1,4 +1,5 @@
 #pragma once
+#include "CAvatarVtbl.h"
 #include "AvatarLook.h"
 #include "Ztl_bstr_t.h"
 #include "Secpoint.h"
@@ -115,7 +116,7 @@ class CAvatar
 		//aSPAction
 	};
 
-	//CAvatarVtbl* vfptr;
+	CAvatarVtbl* vfptr;
 	AvatarLook m_avatarLook;
 	AvatarLook m_avatarLookLast;
 	unsigned int Unknown1;
