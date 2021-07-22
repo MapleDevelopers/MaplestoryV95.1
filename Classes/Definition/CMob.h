@@ -1,5 +1,8 @@
 #pragma once
 #include "CLife.h"
+#include "MobStat.h"
+#include "Range.h"
+#include "_ZtlSecureTear_.h"
 
 /*
 00000000 CMob            struc; (sizeof = 0x5E8, align = 0x8, copyof_2235)
@@ -180,7 +183,6 @@ class CMob : CLife
 		{
 		};
 
-
 		bool bLeft;
 		int nAttackIdx;
 	};
@@ -201,4 +203,32 @@ class CMob : CLife
 	//m_pvc
 	//m_pvcActive
 	//m_pvcHead
+	_ZtlSecureTear_ m_bInViewSplit[2];
+	_ZtlSecureTear_ m_bInViewSplit_CS;
+	_ZtlSecureTear_ m_nMobCtrlState[2];
+	_ZtlSecureTear_ m_nMobCtrlState_CS;
+	_ZtlSecureTear_ m_nMobCtrlSN[2];
+	_ZtlSecureTear_ m_nMobCtrlSN_CS;
+	int m_nSkillCommand;
+	int m_nSLV;
+	int m_nSummonType;
+	int m_tSummonEffect;
+	int m_tDoomEffectEnd;
+	_ZtlSecureTear_ m_tLastApplyCtrl[2];
+	_ZtlSecureTear_ m_tLastApplyCtrl_CS;
+	_ZtlSecureTear_ m_tLastTryPickUpDrop[2];
+	_ZtlSecureTear_ m_tLastTryPickUpDrop_CS;
+	int m_tLastAreaAttack;
+	bool m_bDoFirstAttack;
+	unsigned int m_uLayerStateCounter;
+	_ZtlSecureTear_ m_dwMobID[2];
+	_ZtlSecureTear_ m_dwMobID_CS;
+	void* m_pTemplate;
+	void* m_pTemplateByDoom;
+	_ZtlSecureTear_ m_nMP[2];
+	_ZtlSecureTear_ m_nMP_CS;
+	MobStat m_stat;
+	RANGE m_rgHorz;
+	int m_nTeamForMCarnival;
+	int m_nPhase;
 };
