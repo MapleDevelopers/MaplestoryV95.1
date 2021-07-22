@@ -127,4 +127,78 @@
 */
 class CMob : CLife
 {
+	/*
+	00000000 CMob::ATTACKEFFECT struc; (sizeof = 0xC, align = 0x4, copyof_2176)
+	00000000; XREF: CMob / r
+	00000000 tStart          dd ?
+	00000004 bLeft           dd ?
+	00000008 sEffect         Ztl_bstr_t ?
+	0000000C CMob::ATTACKEFFECT ends
+	*/
+	struct ATTACKEFFECT
+	{
+		int tStart;
+		bool bLeft;
+		Ztl_bstr_t sEffect;
+	};
+
+	/*
+	00000000 CMob::AFFECTEDSKILLENTRY struc ; (sizeof=0x18, align=0x4, copyof_2181)
+	00000000 nSkillID        dd ?
+	00000004 tStart          dd ?
+	00000008 posList         dd ?                    ; offset
+	0000000C bIcon           dd ?
+	00000010 bFlip           dd ?
+	00000014 pLayer          _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf> > ?
+	00000018 CMob::AFFECTEDSKILLENTRY ends
+	*/
+	struct AFFECTEDSKILLENTRY
+	{
+		int nSkillID;
+		int tStart;
+		void* posList;
+		bool bIcon;
+		bool bFlip;
+		//pLayer
+	};
+
+	/*
+	00000000 CMob::ATTACKENTRY struc ; (sizeof=0x20, align=0x4, copyof_2187)
+	00000000 tTime           dd ?
+	00000004 nType           dd ?
+	00000008 ___u2           $8D0FFB5756D375F4E287AC335782F0D3 ?
+	00000018 bLeft           dd ?
+	0000001C nAttackIdx      dd ?
+	00000020 CMob::ATTACKENTRY ends
+	*/
+	struct ATTACKENTRY
+	{
+		int tTime;
+		int nType;
+
+		union ___u2
+		{
+		};
+
+
+		bool bLeft;
+		int nAttackIdx;
+	};
+
+	int m_nMobChargeCount;
+	bool m_bAttackReady;
+	int m_nAngerGaugeCount;
+	int m_nUpdateTime;
+	int m_nCurrIndicatorIndex;
+	bool m_bFullChargeEffectTime;
+	bool m_bFullChargeEffectStartTime;
+	CMob::ATTACKEFFECT m_effectAttack;
+	ZList<CMob::AFFECTEDSKILLENTRY> m_lAffectedSkillEntry;
+	ZList<CMob::ATTACKENTRY> m_lAttackEntry;
+	//m_lpLayerASAni
+	//m_lpLayerASIcon
+	void* m_posAffectedGuidedBullet;
+	//m_pvc
+	//m_pvcActive
+	//m_pvcHead
 };

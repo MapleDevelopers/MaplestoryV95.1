@@ -3,6 +3,7 @@
 #include "AvatarLook.h"
 #include "Ztl_bstr_t.h"
 #include "Secpoint.h"
+#include "_ZltSecure_.h"
 
 /*
 00000000 CAvatar         struc ; (sizeof=0x1940, align=0x4, copyof_1993)
@@ -129,14 +130,14 @@ class CAvatar
 	int m_nWalkType;
 	int m_nStandType;
 	int m_nAttackActionType;
-	//_ZtlSecureTear_ m_nWeaponAttackSpeed
-	//_ZtlSecureTear_ m_nWeaponAttackSpeed_CS
+	_ZtlSecureTear_ m_nWeaponAttackSpeed;
+	_ZtlSecureTear_ m_nWeaponAttackSpeed_CS;
 	Ztl_bstr_t m_sWeaponAfterimage;
 	bool m_bBlinking;
 	int m_tNextBlink;
 	int m_tEmotionEnd;
-	//_ZtlSecureTear_ m_nEmotion
-	//_ZtlSecureTear_ m_nEmotion_CS
+	_ZtlSecureTear_ m_nEmotion;
+	_ZtlSecureTear_ m_nEmotion_CS;
 	bool m_bResetEmotion;
 	unsigned long m_dwMorphTemplateID;
 	RECT m_rcMorphBody;

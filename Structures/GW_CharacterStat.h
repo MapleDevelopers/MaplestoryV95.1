@@ -60,13 +60,41 @@ struct GW_CharacterStat
 	int nFace;
 	int nHair;
 	LARGE_INTEGER liPetLockerSN[3];
-	//TODO: _ZtlSecureTear_
-	// 	   .
-	// 	   .
-	// 	   .
+	_ZtlSecureTear_ nLevel;
+	_ZtlSecureTear_ nLevel_CS;
+	_ZtlSecureTear_ nJob;
+	_ZtlSecureTear_ nJob_CS;
+	_ZtlSecureTear_ nSTR;
+	_ZtlSecureTear_ nSTR_CS;
+	_ZtlSecureTear_ nDEX;
+	_ZtlSecureTear_ nDEX_CS;
+	_ZtlSecureTear_ nINT;
+	_ZtlSecureTear_ nINT_CS;
+	_ZtlSecureTear_ nLUK;
+	_ZtlSecureTear_ nLUK_CS;
+	_ZtlSecureTear_ nHP;
+	_ZtlSecureTear_ nHP_CS;
+	_ZtlSecureTear_ nMHP;
+	_ZtlSecureTear_ nMHP_CS;
+	_ZtlSecureTear_ nMP;
+	_ZtlSecureTear_ nMP_CS;
+	_ZtlSecureTear_ nMMP;
+	_ZtlSecureTear_ nMMP_CS;
+	_ZtlSecureTear_ nAP;
+	_ZtlSecureTear_ nAP_CS;
+	_ZtlSecureTear_ nSP;
+	_ZtlSecureTear_ nSP_CS;
+	_ZtlSecureTear_ nEXP;
+	_ZtlSecureTear_ nEXP_CS;
+	_ZtlSecureTear_ nPOP;
+	_ZtlSecureTear_ nPOP_CS;
+	_ZtlSecureTear_ nMoney;
+	_ZtlSecureTear_ nMoney_CS;
+	_ZtlSecureTear_ nTempEXP;
+	_ZtlSecureTear_ nTempEXP_CS;
 	//ExtendSP extendSP
-	//_ZtlSecureTear_dwPosMap
-    //_ZtlSecureTear_dwPosMap_CS
+	_ZtlSecureTear_ dwPosMap;
+	_ZtlSecureTear_ dwPosMap_CS;
 	char nPortal;
 	int nCheckSum;
 	char nItemCountCheckSum;
