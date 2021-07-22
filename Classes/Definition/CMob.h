@@ -11,7 +11,7 @@
 #include "Rect.h"
 #include "Secpoint.h"
 #include "UINT128.h"
-#include "_ZtlSecureTear_.h"
+#include "_ZtlSecure_.h"
 
 /*
 00000000 CMob            struc; (sizeof = 0x5E8, align = 0x8, copyof_2235)
@@ -252,6 +252,102 @@ class CMob : CLife
 		};
 	};
 
+	/*
+	00000000 CMob::DAMAGEINFO struc ; (sizeof=0xA8, align=0x4, copyof_2202)
+	00000000 _ZtlSecureTear_tDelayedProcess dd 2 dup(?)
+	00000008 _ZtlSecureTear_tDelayedProcess_CS dd ?
+	0000000C _ZtlSecureTear_dwCharacterId dd 2 dup(?)
+	00000014 _ZtlSecureTear_dwCharacterId_CS dd ?
+	00000018 _ZtlSecureTear_nSkillID dd 2 dup(?)
+	00000020 _ZtlSecureTear_nSkillID_CS dd ?
+	00000024 _ZtlSecureTear_nHitAction dd 2 dup(?)
+	0000002C _ZtlSecureTear_nHitAction_CS dd ?
+	00000030 _ZtlSecureTear_bLeft dd 2 dup(?)
+	00000038 _ZtlSecureTear_bLeft_CS dd ?
+	0000003C _ZtlSecureTear_nDamage dd 2 dup(?)
+	00000044 _ZtlSecureTear_nDamage_CS dd ?
+	00000048 _ZtlSecureTear_bCriticalAttack dd 2 dup(?)
+	00000050 _ZtlSecureTear_bCriticalAttack_CS dd ?
+	00000054 _ZtlSecureTear_nAttackIdx dd 2 dup(?)
+	0000005C _ZtlSecureTear_nAttackIdx_CS dd ?
+	00000060 _ZtlSecureTear_bChase dd 2 dup(?)
+	00000068 _ZtlSecureTear_bChase_CS dd ?
+	0000006C _ZtlSecureTear_nMoveType dd 2 dup(?)
+	00000074 _ZtlSecureTear_nMoveType_CS dd ?
+	00000078 _ZtlSecureTear_nBulletCashItemID dd 2 dup(?)
+	00000080 _ZtlSecureTear_nBulletCashItemID_CS dd ?
+	00000084 _ZtlSecureTear_nMoveEndingPosX dd 2 dup(?)
+	0000008C _ZtlSecureTear_nMoveEndingPosX_CS dd ?
+	00000090 _ZtlSecureTear_nMoveEndingPosY dd 2 dup(?)
+	00000098 _ZtlSecureTear_nMoveEndingPosY_CS dd ?
+	0000009C _ZtlSecureTear_bMoveLeft dd 2 dup(?)
+	000000A4 _ZtlSecureTear_bMoveLeft_CS dd ?
+	000000A8 CMob::DAMAGEINFO ends
+	*/
+	struct DAMAGEINFO
+	{
+		_ZtlSecureTear_ tDelayedProcess[2];
+		_ZtlSecureTear_ tDelayedProcess_CS;
+		_ZtlSecureTear_ dwCharacterId[2];
+		_ZtlSecureTear_ dwCharacterId_CS;
+		_ZtlSecureTear_ nSkillID[2];
+		_ZtlSecureTear_ nSkillID_CS;
+		_ZtlSecureTear_ nHitAction[2];
+		_ZtlSecureTear_ nHitAction_CS;
+		_ZtlSecureTear_ bLeft[2];
+		_ZtlSecureTear_ bLeft_CS;
+		_ZtlSecureTear_ nDamage[2];
+		_ZtlSecureTear_ nDamage_CS;
+		_ZtlSecureTear_ bCriticalAttack[2];
+		_ZtlSecureTear_ bCriticalAttack_CS;
+		_ZtlSecureTear_ nAttackIdx[2];
+		_ZtlSecureTear_ nAttackIdx_CS;
+		_ZtlSecureTear_ bChase[2];
+		_ZtlSecureTear_ bChase_CS;
+		_ZtlSecureTear_ nMoveType[2];
+		_ZtlSecureTear_ nMoveType_CS;
+		_ZtlSecureTear_ nBulletCashItemID[2];
+		_ZtlSecureTear_ nBulletCashItemID_CS;
+		_ZtlSecureTear_ nMoveEndingPosX[2];
+		_ZtlSecureTear_ nMoveEndingPosX_CS;
+		_ZtlSecureTear_ nMoveEndingPosY[2];
+		_ZtlSecureTear_ nMoveEndingPosY_CS;
+		_ZtlSecureTear_ bMoveLeft[2];
+		_ZtlSecureTear_ bMoveLeft_CS;
+	};
+
+	/*
+	00000000 CMob::HITEFFECT struc ; (sizeof=0x1C, align=0x4, copyof_2207)
+	00000000 tHit            dd ?
+	00000004 nSkillID        dd ?
+	00000008 bLeft           dd ?
+	0000000C bSfx            dd ?
+	00000010 sHitUOL         Ztl_bstr_t ?
+	00000014 ptRel           tagPOINT ?
+	0000001C CMob::HITEFFECT ends
+	*/
+	struct HITEFFECT
+	{
+		int tHit;
+		int nSkillID;
+		bool bLeft;
+		bool bSfx;
+		Ztl_bstr_t sHitUOL;
+		POINT ptRel;
+	};
+
+	/*
+	00000000 CMob::DROPPICKUP struc ; (sizeof=0x8, align=0x4, copyof_2212)
+	00000000 dwDropID        dd ?
+	00000004 tLastTry        dd ?
+	00000008 CMob::DROPPICKUP ends
+	*/
+	struct DROPPICKUP
+	{
+		unsigned long dwDropID;
+		int tLastTry;
+	};
+
 	int m_nMobChargeCount;
 	bool m_bAttackReady;
 	int m_nAngerGaugeCount;
@@ -259,9 +355,9 @@ class CMob : CLife
 	int m_nCurrIndicatorIndex;
 	bool m_bFullChargeEffectTime;
 	bool m_bFullChargeEffectStartTime;
-	CMob::ATTACKEFFECT m_effectAttack;
-	ZList<CMob::AFFECTEDSKILLENTRY> m_lAffectedSkillEntry;
-	ZList<CMob::ATTACKENTRY> m_lAttackEntry;
+	ATTACKEFFECT m_effectAttack;
+	ZList<AFFECTEDSKILLENTRY> m_lAffectedSkillEntry;
+	ZList<ATTACKENTRY> m_lAttackEntry;
 	//m_lpLayerASAni
 	//m_lpLayerASIcon
 	void* m_posAffectedGuidedBullet;
@@ -332,9 +428,9 @@ class CMob : CLife
 	int m_tLastHitByMob;
 	int m_tLastHitDazzledMob;
 	ZList<unsigned long> m_ldwRevive;
-	ZList<CMob::DAMAGEINFO> m_lDamageInfo;
-	ZList<CMob::HITEFFECT> m_lHitEffect;
-	ZList<CMob::DROPPICKUP> m_lDropPickUpLog;
+	ZList<DAMAGEINFO> m_lDamageInfo;
+	ZList<HITEFFECT> m_lHitEffect;
+	ZList<DROPPICKUP> m_lDropPickUpLog;
 	//m_pLayerAction
 	int m_nCalcDamageStatIndex;
 	//m_pLayerHPTag
