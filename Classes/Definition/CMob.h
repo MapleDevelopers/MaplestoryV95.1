@@ -1,7 +1,16 @@
 #pragma once
+#include "CActionMan.h"
 #include "CLife.h"
+#include "CInPacket.h"
+#include "CFadeoutBullet.h"
+#include "CAttrShoe.h"
+#include "ZArray.h"
+#include "TSecType.h"
 #include "MobStat.h"
 #include "Range.h"
+#include "Rect.h"
+#include "Secpoint.h"
+#include "UINT128.h"
 #include "_ZtlSecureTear_.h"
 
 /*
@@ -187,6 +196,62 @@ class CMob : CLife
 		int nAttackIdx;
 	};
 
+	/*
+	00000000 CMob::DelaySkill struc; (sizeof = 0x10, align = 0x4, copyof_2215)
+	00000000 tSkillDelayTime dd ?
+	00000004 nSkillID        dd ?
+	00000008 nSLV            dd ?
+	0000000C nOption         dd ?
+	00000010 CMob::DelaySkill ends	
+	*/
+	struct DelaySkill
+	{
+		int tSkillDelayTime;
+		int nSkillID;
+		int nSLV;
+		int nOption;
+	};
+
+	/*
+	00000000 CMob::ReservedPacket struc; (sizeof = 0x2C, align = 0x4, copyof_2222)
+	00000000 bSet            dd ?
+	00000004 uFlag           UINT128 ?
+	00000014 iPacket         CInPacket ?
+	0000002C CMob::ReservedPacket ends
+	*/
+	struct ReservedPacket
+	{
+		bool bSet;
+		UINT128 uFlag;
+		CInPacket iPacket;
+	};
+
+	/*
+	00000000 CMob::MobBullet struc; (sizeof = 0x44, align = 0x4, copyof_2232)
+	00000000 baseclass_0     CFadeoutBullet ?
+	00000034 m_nZ            dd ?
+	00000038 m_bLeft         dd ?
+	0000003C m_sBallUOL      Ztl_bstr_t ?
+	00000040 m_nAttackIdx    dd ?
+	00000044 CMob::MobBullet ends
+	*/
+	struct MobBullet : CFadeoutBullet
+	{
+		int m_nZ;
+		bool m_bLeft;
+		Ztl_bstr_t m_sBallUOL;
+		int m_nAttackIdx;
+
+		/*
+		00000000 CMob::MobBullet::Container struc ; (sizeof=0x18, align=0x4, copyof_2234)
+		00000000 baseclass_0     BulletContainer<CMob::MobBullet> ?
+		00000018 CMob::MobBullet::Container ends
+		*/
+		struct Container : BulletContainer<MobBullet>
+		{
+		};
+	};
+
 	int m_nMobChargeCount;
 	bool m_bAttackReady;
 	int m_nAngerGaugeCount;
@@ -231,4 +296,78 @@ class CMob : CLife
 	RANGE m_rgHorz;
 	int m_nTeamForMCarnival;
 	int m_nPhase;
+	int m_nPhase;
+	_ZtlSecureTear_ m_nMoveAction[2];
+	_ZtlSecureTear_ m_nMoveAction_CS;
+	_ZtlSecureTear_ m_nOneTimeAction[2];
+	_ZtlSecureTear_ m_nOneTimeAction_CS;
+	_ZtlSecureTear_ m_tHitExpire[2];
+	_ZtlSecureTear_ m_tHitExpire_CS;
+	_ZtlSecureTear_ m_tLastHitExpire[2];
+	_ZtlSecureTear_ m_tLastHitExpire_CS;
+	void* m_posFrame;
+	_ZtlSecureTear_ m_tCurFrameRemain[2];
+	_ZtlSecureTear_ m_tCurFrameRemain_CS;
+	_ZtlSecureTear_ m_tNextFramesRemain[2];
+	_ZtlSecureTear_ m_tNextFramesRemain_CS;
+	_ZtlSecureTear_ m_tActionDelay[2];
+	_ZtlSecureTear_ m_tActionDelay_CS;
+	RECT m_rcBody;
+	RECT m_rcBodyFlip;
+	ZArray<RECT> m_arcMultiBody;
+	ZArray<RECT> m_arcMultiBodyFlip;
+	ZArray<RECT> m_arcAttackBody;
+	ZArray<RECT> m_arcAttackBodyFlip;
+	ZArray<ZList<ZRef<CActionMan::MOBACTIONFRAMEENTRY>>> m_aAction;
+	_ZtlSecureTear_ m_tInitDelay[2];
+	_ZtlSecureTear_ m_tInitDelay_CS;
+	_ZtlSecureTear_ m_nDeadType[2];
+	_ZtlSecureTear_ m_nDeadType_CS;
+	_ZtlSecureTear_ m_nSuspended[2];
+	_ZtlSecureTear_ m_nSuspended_CS;
+	int m_tLastPoisonDamage;
+	int m_tLastVenomDamage;
+	int m_tLastAmbushDamage;
+	int m_tLastObstacleDamage;
+	int m_tLastHitByMob;
+	int m_tLastHitDazzledMob;
+	ZList<unsigned long> m_ldwRevive;
+	ZList<CMob::DAMAGEINFO> m_lDamageInfo;
+	ZList<CMob::HITEFFECT> m_lHitEffect;
+	ZList<CMob::DROPPICKUP> m_lDropPickUpLog;
+	//m_pLayerAction
+	int m_nCalcDamageStatIndex;
+	//m_pLayerHPTag
+	//m_pEffectLayer
+	//m_pLayerAngerTag
+	bool m_bNeedToUpdateCrc;
+	unsigned long m_dwMobCrc;
+	int m_tLastHitted;
+	//m_pCanvasHPIndicator
+	ZMap<long, long, long> m_mDelayedHPIndicator;
+	ZArray<long> m_pCanvasAngerIndicatorArrayCount;
+	//m_pCanvasAngerIndicatorArray
+	int m_nGaugeCount;
+	ZRef<CAttrShoe> m_pAttrShoe;
+	SECPOINT m_ptPos;
+	SECPOINT m_ptPosPrev;
+	int m_nHPpercentage;
+	bool m_bWaitingToBeSetTossed;
+	ZArray<tagPOINT> m_aMultiTargetForBall;
+	ZArray<long> m_aRandTimeforAreaAttack;
+	DelaySkill m_delaySkill;
+	bool m_bDoomReserved;
+	bool m_bDoomReservedSN;
+	int Unknown1;
+	ZList<ZRef<ReservedPacket>> m_lpStatChangeReserved;
+	TSecType<int> m_bChasing;
+	int m_tTimeBomb;
+	unsigned long m_dwSwallowCharacterID;
+	unsigned long m_dwTargetMobID;
+	int m_tEscortStopActTime;
+	int m_nEscortStopAct;
+	int m_nDamagedByMobHPBarState;
+	int m_nRushAttackIdx;
+	int m_tRushAttackEnd;
+	MobBullet::Container m_Bullets;
 };
