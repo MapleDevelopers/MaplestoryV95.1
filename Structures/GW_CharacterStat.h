@@ -1,4 +1,5 @@
 #pragma once
+#include "ExtendSP.h"
 
 /*
 00000000 GW_CharacterStat struc; (sizeof = 0xF9, copyof_1764)
@@ -60,40 +61,40 @@ struct GW_CharacterStat
 	int nFace;
 	int nHair;
 	LARGE_INTEGER liPetLockerSN[3];
-	_ZtlSecureTear_ nLevel;
+	_ZtlSecureTear_ nLevel[2];
 	_ZtlSecureTear_ nLevel_CS;
-	_ZtlSecureTear_ nJob;
+	_ZtlSecureTear_ nJob[2];
 	_ZtlSecureTear_ nJob_CS;
-	_ZtlSecureTear_ nSTR;
+	_ZtlSecureTear_ nSTR[2];
 	_ZtlSecureTear_ nSTR_CS;
-	_ZtlSecureTear_ nDEX;
+	_ZtlSecureTear_ nDEX[2];
 	_ZtlSecureTear_ nDEX_CS;
-	_ZtlSecureTear_ nINT;
+	_ZtlSecureTear_ nINT[2];
 	_ZtlSecureTear_ nINT_CS;
-	_ZtlSecureTear_ nLUK;
+	_ZtlSecureTear_ nLUK[2];
 	_ZtlSecureTear_ nLUK_CS;
-	_ZtlSecureTear_ nHP;
+	_ZtlSecureTear_ nHP[2];
 	_ZtlSecureTear_ nHP_CS;
-	_ZtlSecureTear_ nMHP;
+	_ZtlSecureTear_ nMHP[2];
 	_ZtlSecureTear_ nMHP_CS;
-	_ZtlSecureTear_ nMP;
+	_ZtlSecureTear_ nMP[2];
 	_ZtlSecureTear_ nMP_CS;
-	_ZtlSecureTear_ nMMP;
+	_ZtlSecureTear_ nMMP[2];
 	_ZtlSecureTear_ nMMP_CS;
-	_ZtlSecureTear_ nAP;
+	_ZtlSecureTear_ nAP[2];
 	_ZtlSecureTear_ nAP_CS;
-	_ZtlSecureTear_ nSP;
+	_ZtlSecureTear_ nSP[2];
 	_ZtlSecureTear_ nSP_CS;
-	_ZtlSecureTear_ nEXP;
+	_ZtlSecureTear_ nEXP[2];
 	_ZtlSecureTear_ nEXP_CS;
-	_ZtlSecureTear_ nPOP;
+	_ZtlSecureTear_ nPOP[2];
 	_ZtlSecureTear_ nPOP_CS;
-	_ZtlSecureTear_ nMoney;
+	_ZtlSecureTear_ nMoney[2];
 	_ZtlSecureTear_ nMoney_CS;
-	_ZtlSecureTear_ nTempEXP;
+	_ZtlSecureTear_ nTempEXP[2];
 	_ZtlSecureTear_ nTempEXP_CS;
-	//ExtendSP extendSP
-	_ZtlSecureTear_ dwPosMap;
+	ExtendSP extendSP;
+	_ZtlSecureTear_ dwPosMap[2];
 	_ZtlSecureTear_ dwPosMap_CS;
 	char nPortal;
 	int nCheckSum;

@@ -130,13 +130,13 @@ class CAvatar
 	int m_nWalkType;
 	int m_nStandType;
 	int m_nAttackActionType;
-	_ZtlSecureTear_ m_nWeaponAttackSpeed;
+	_ZtlSecureTear_ m_nWeaponAttackSpeed[2];
 	_ZtlSecureTear_ m_nWeaponAttackSpeed_CS;
 	Ztl_bstr_t m_sWeaponAfterimage;
 	bool m_bBlinking;
 	int m_tNextBlink;
 	int m_tEmotionEnd;
-	_ZtlSecureTear_ m_nEmotion;
+	_ZtlSecureTear_ m_nEmotion[2];
 	_ZtlSecureTear_ m_nEmotion_CS;
 	bool m_bResetEmotion;
 	unsigned long m_dwMorphTemplateID;
@@ -158,7 +158,7 @@ class CAvatar
 	int m_tAlertRemain;
 	int m_nMoveAction;
 	int m_nOneTimeAction;
-	ACTIONINFO m_aiAction;
+	ACTIONINFO m_aiAction[2];
 	int m_nDefaultEmotion;
 	int m_nChairHeight;
 	//Layers
