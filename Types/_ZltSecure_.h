@@ -31,7 +31,7 @@ unsigned int __fastcall _ZtlSecureTear_(T* at, T t)
 	{
 		int rotations = sizeof(T) < sizeof(unsigned int) ? NULL : ZTLSECURE_ROTATION;
 
-		/* TODO use CRand32::Random(&g_rand)like MapleStory does */
+		/* TODO use CRand32::Random(&g_rand) like MapleStory does */
 		key[i] = sizeof(T) < sizeof(unsigned int) ? LOBYTE(rand()) : rand();
 		encrypted_data[i] = _rotr(p[i] ^ key[i], rotations);
 
