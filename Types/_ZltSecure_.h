@@ -1,4 +1,5 @@
 #pragma once
+#include "ZException.h"
 #include <Windows.h>
 #include <condition_variable>
 
@@ -65,8 +66,8 @@ T __fastcall _ZtlSecureFuse_(T* at, unsigned int uCS)
 	if (checksum != uCS)
 	{
 		// TODO exception handling
-		/*ZException zException = { 5 };
-		CxxThrowException(&zException, (void*)ThrowInfo::ZException);*/
+		ZException zException = { 5 };
+		//CxxThrowException(&zException, (void*)ThrowInfo::ZException);
 	}
 
 	return  *reinterpret_cast<T*>(&value[0]);
