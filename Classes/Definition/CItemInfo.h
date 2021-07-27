@@ -2,9 +2,13 @@
 #include "CItemInfoVtbl.h"
 #include "ZXString.h"
 #include "ZList.h"
+#include "ZArray.h"
 #include "ZMap.h"
 #include "ZRef.h"
 #include "ZFatalSection.h"
+#include "Ztl_bstr_t.h"
+#include "Point.h"
+#include "UINT128.h"
 
 /*
 00000000 CItemInfo       struc ; (sizeof=0x298, align=0x4, copyof_5885)
@@ -69,150 +73,165 @@ class CItemInfo
 	};
 
 	/*
-	00000000 CItemInfo::EQUIPITEM struc ; (sizeof=0x270, align=0x8, copyof_5875)
-	00000000 _ZtlSecureTear_nItemID dd 2 dup(?)
-	00000008 _ZtlSecureTear_nItemID_CS dd ?
-	0000000C bTimeLimited    dd ?
-	00000010 sItemName       ZXString<char> ?
-	00000014 bsUOL           Ztl_bstr_t ?
-	00000018 _ZtlSecureTear_nrSTR dd 2 dup(?)
-	00000020 _ZtlSecureTear_nrSTR_CS dd ?
-	00000024 _ZtlSecureTear_nrINT dd 2 dup(?)
-	0000002C _ZtlSecureTear_nrINT_CS dd ?
-	00000030 _ZtlSecureTear_nrDEX dd 2 dup(?)
-	00000038 _ZtlSecureTear_nrDEX_CS dd ?
-	0000003C _ZtlSecureTear_nrLUK dd 2 dup(?)
-	00000044 _ZtlSecureTear_nrLUK_CS dd ?
-	00000048 _ZtlSecureTear_nrPOP dd 2 dup(?)
-	00000050 _ZtlSecureTear_nrPOP_CS dd ?
-	00000054 _ZtlSecureTear_nrJob dd 2 dup(?)
-	0000005C _ZtlSecureTear_nrJob_CS dd ?
-	00000060 _ZtlSecureTear_nrLevel dd 2 dup(?)
-	00000068 _ZtlSecureTear_nrLevel_CS dd ?
-	0000006C _ZtlSecureTear_nrMobLevel dd 2 dup(?)
-	00000074 _ZtlSecureTear_nrMobLevel_CS dd ?
-	00000078 nReplaceItemID  dd ?
-	0000007C sReplaceMsg     ZXString<char> ?
-	00000080 nReplacePeriod  dd ?
-	00000084 _ZtlSecureTear_nSellPrice dd 2 dup(?)
-	0000008C _ZtlSecureTear_nSellPrice_CS dd ?
-	00000090 _ZtlSecureTear_bCash dd 2 dup(?)
-	00000098 _ZtlSecureTear_bCash_CS dd ?
-	0000009C niMaxHPr        dw ?
-	0000009E niMaxMPr        dw ?
-	000000A0 _ZtlSecureTear_nRUC db 2 dup(?)
-	000000A2                 db ? ; undefined
-	000000A3                 db ? ; undefined
-	000000A4 _ZtlSecureTear_nRUC_CS dd ?
-	000000A8 _ZtlSecureTear_nTUC db 2 dup(?)
-	000000AA                 db ? ; undefined
-	000000AB                 db ? ; undefined
-	000000AC _ZtlSecureTear_nTUC_CS dd ?
-	000000B0 _ZtlSecureTear_niSTR dw 2 dup(?)
-	000000B4 _ZtlSecureTear_niSTR_CS dd ?
-	000000B8 _ZtlSecureTear_niDEX dw 2 dup(?)
-	000000BC _ZtlSecureTear_niDEX_CS dd ?
-	000000C0 _ZtlSecureTear_niINT dw 2 dup(?)
-	000000C4 _ZtlSecureTear_niINT_CS dd ?
-	000000C8 _ZtlSecureTear_niLUK dw 2 dup(?)
-	000000CC _ZtlSecureTear_niLUK_CS dd ?
-	000000D0 _ZtlSecureTear_niMaxHP dw 2 dup(?)
-	000000D4 _ZtlSecureTear_niMaxHP_CS dd ?
-	000000D8 _ZtlSecureTear_niMaxMP dw 2 dup(?)
-	000000DC _ZtlSecureTear_niMaxMP_CS dd ?
-	000000E0 _ZtlSecureTear_niPAD dw 2 dup(?)
-	000000E4 _ZtlSecureTear_niPAD_CS dd ?
-	000000E8 _ZtlSecureTear_niMAD dw 2 dup(?)
-	000000EC _ZtlSecureTear_niMAD_CS dd ?
-	000000F0 _ZtlSecureTear_niPDD dw 2 dup(?)
-	000000F4 _ZtlSecureTear_niPDD_CS dd ?
-	000000F8 _ZtlSecureTear_niMDD dw 2 dup(?)
-	000000FC _ZtlSecureTear_niMDD_CS dd ?
-	00000100 _ZtlSecureTear_niACC dw 2 dup(?)
-	00000104 _ZtlSecureTear_niACC_CS dd ?
-	00000108 _ZtlSecureTear_niEVA dw 2 dup(?)
-	0000010C _ZtlSecureTear_niEVA_CS dd ?
-	00000110 _ZtlSecureTear_niCraft dw 2 dup(?)
-	00000114 _ZtlSecureTear_niCraft_CS dd ?
-	00000118 _ZtlSecureTear_niSpeed dw 2 dup(?)
-	0000011C _ZtlSecureTear_niSpeed_CS dd ?
-	00000120 _ZtlSecureTear_niJump dw 2 dup(?)
-	00000124 _ZtlSecureTear_niJump_CS dd ?
-	00000128 _ZtlSecureTear_niSwim dw 2 dup(?)
-	0000012C _ZtlSecureTear_niSwim_CS dd ?
-	00000130 _ZtlSecureTear_niFatigue dw 2 dup(?)
-	00000134 _ZtlSecureTear_niFatigue_CS dd ?
-	00000138 _ZtlSecureTear_nKnockback dd 2 dup(?)
-	00000140 _ZtlSecureTear_nKnockback_CS dd ?
-	00000144                 db ? ; undefined
-	00000145                 db ? ; undefined
-	00000146                 db ? ; undefined
-	00000147                 db ? ; undefined
-	00000148 _ZtlSecureTear_dRecovery dq 2 dup(?)
-	00000158 _ZtlSecureTear_dRecovery_CS dd ?
-	0000015C                 db ? ; undefined
-	0000015D                 db ? ; undefined
-	0000015E                 db ? ; undefined
-	0000015F                 db ? ; undefined
-	00000160 _ZtlSecureTear_dFs dq 2 dup(?)
-	00000170 _ZtlSecureTear_dFs_CS dd ?
-	00000174 _ZtlSecureTear_nSwim dd 2 dup(?)
-	0000017C _ZtlSecureTear_nSwim_CS dd ?
-	00000180 _ZtlSecureTear_nTamingMob dd 2 dup(?)
-	00000188 _ZtlSecureTear_nTamingMob_CS dd ?
-	0000018C _ZtlSecureTear_nIUC dd 2 dup(?)
-	00000194 _ZtlSecureTear_nIUC_CS dd ?
-	00000198 nMinGrade       db ?
-	00000199                 db ? ; undefined
-	0000019A                 db ? ; undefined
-	0000019B                 db ? ; undefined
-	0000019C bQuest          dd ?
-	000001A0 bPartyQuest     dd ?
-	000001A4 bOnly           dd ?
-	000001A8 bOnlyEquip      dd ?
-	000001AC bTradeBlock     dd ?
-	000001B0 nAppliableKarmaType dd ?
-	000001B4 bNotSale        dd ?
-	000001B8 bBigSize        dd ?
-	000001BC bExpireOnLogout dd ?
-	000001C0 nirPoison       dw ?
-	000001C2 nirIce          dw ?
-	000001C4 nirFire         dw ?
-	000001C6 nirLight        dw ?
-	000001C8 nirHoly         dw ?
-	000001CA                 db ? ; undefined
-	000001CB                 db ? ; undefined
-	000001CC bBindedWhenEquiped dd ?
-	000001D0 dwSpecialID     dd ?
-	000001D4 bNotExtend      dd ?
-	000001D8 bAccountSharable dd ?
-	000001DC bSharableOnce   dd ?
-	000001E0 dwAfterimageFlag dd ?
-	000001E4 nUserInfoScale  dd ?
-	000001E8 ptUserInfoDiff  tagPOINT ?
-	000001F0 uPetTemplateFlag UINT128 ?
-	00000200 dwPetAbilityFlag dd ?
-	00000204 nNameTag        dd ?
-	00000208 nChatBalloon    dd ?
-	0000020C anLevelUpTypePool ZArray<long> ?
-	00000210 apLevelInfo     ZArray<ZRef<CItemInfo::LevelInfo> > ?
-	00000214 bEpic           dd ?
-	00000218 nSetItemID      dd ?
-	0000021C sDesc           ZXString<char> ?
-	00000220 lpItemSkill     ZList<ZRef<CItemInfo::ItemSkill> > ?
-	00000234 mSkillLevelBonus ZMap<long,long,long> ?
-	0000024C aBonusExpRate   ZArray<ZPair<long,long> > ?
-	00000250 aPotionDiscountRate ZArray<ZPair<long,long> > ?
-	00000254 aTamingMobItem  ZArray<long> ?
-	00000258 pAddition       ZRef<CItemInfo::EQUIPITEM::ADDITION> ?
-	00000260 nDurability     dd ?
-	00000264 nEnchantCategory dd ?
-	00000268 bTransform      dd ?
-	0000026C nIUCMax         dd ?
-	00000270 CItemInfo::EQUIPITEM ends
+	* Autogenerated by IdaParser on: 7/27/2021 7:42:41 PM
+	*/
+	struct LevelInfo
+	{
+		int nExpRate;
+		ZList<ZRef<RandomStat>> lpIncStat;
+		ZMap<long, ZRef<Ability>, long> mpAbility;
+	};
+
+	/*
+	* Autogenerated by IdaParser on: 7/27/2021 7:39:45 PM
+	*/
+	struct ItemSkill
+	{
+		int nSkillID;
+		int nSkillLevel;
+	};
+
+	/*
+	* Autogenerated by IdaParser on: 7/27/2021 7:24:05 PM
 	*/
 	struct EQUIPITEM
 	{
+		/*
+		* Autogenerated by IdaParser on: 7/27/2021 7:34:20 PM
+		*/
+		struct ADDITION
+		{
+			ZRef<Additional::TCond<Additional::SKILL>> pSkill;
+			ZRef<Additional::TCond<Additional::MOBCATEGORY>> pMobCategory;
+			ZRef<Additional::TCond<Additional::ELEMBOOST>> pElemBoost;
+			ZRef<Additional::TCond<Additional::CRITICAL>> pCritical;
+			ZRef<Additional::TCond<Additional::BOSS>> pBoss;
+			ZRef<Additional::TCond<Additional::MOBDIE>> pMobDie;
+			ZRef<Additional::TCond<Additional::HPMPCHANGE>> pHpMpChange;
+		};
+
+		int _ZtlSecureTear_nItemID[2];
+		unsigned int _ZtlSecureTear_nItemID_CS;
+		bool bTimeLimited;
+		ZXString<char> sItemName;
+		Ztl_bstr_t bsUOL;
+		int _ZtlSecureTear_nrSTR[2];
+		unsigned int _ZtlSecureTear_nrSTR_CS;
+		int _ZtlSecureTear_nrINT[2];
+		unsigned int _ZtlSecureTear_nrINT_CS;
+		int _ZtlSecureTear_nrDEX[2];
+		unsigned int _ZtlSecureTear_nrDEX_CS;
+		int _ZtlSecureTear_nrLUK[2];
+		unsigned int _ZtlSecureTear_nrLUK_CS;
+		int _ZtlSecureTear_nrPOP[2];
+		unsigned int _ZtlSecureTear_nrPOP_CS;
+		int _ZtlSecureTear_nrJob[2];
+		unsigned int _ZtlSecureTear_nrJob_CS;
+		int _ZtlSecureTear_nrLevel[2];
+		unsigned int _ZtlSecureTear_nrLevel_CS;
+		int _ZtlSecureTear_nrMobLevel[2];
+		unsigned int _ZtlSecureTear_nrMobLevel_CS;
+		int nReplaceItemID;
+		ZXString<char> sReplaceMsg;
+		int nReplacePeriod;
+		int _ZtlSecureTear_nSellPrice[2];
+		unsigned int _ZtlSecureTear_nSellPrice_CS;
+		int _ZtlSecureTear_bCash[2];
+		unsigned int _ZtlSecureTear_bCash_CS;
+		short niMaxHPr;
+		short niMaxMPr;
+		char _ZtlSecureTear_nRUC[2];
+		unsigned int _ZtlSecureTear_nRUC_CS;
+		char _ZtlSecureTear_nTUC[2];
+		unsigned int _ZtlSecureTear_nTUC_CS;
+		short _ZtlSecureTear_niSTR[2];
+		unsigned int _ZtlSecureTear_niSTR_CS;
+		short _ZtlSecureTear_niDEX[2];
+		unsigned int _ZtlSecureTear_niDEX_CS;
+		short _ZtlSecureTear_niINT[2];
+		unsigned int _ZtlSecureTear_niINT_CS;
+		short _ZtlSecureTear_niLUK[2];
+		unsigned int _ZtlSecureTear_niLUK_CS;
+		short _ZtlSecureTear_niMaxHP[2];
+		unsigned int _ZtlSecureTear_niMaxHP_CS;
+		short _ZtlSecureTear_niMaxMP[2];
+		unsigned int _ZtlSecureTear_niMaxMP_CS;
+		short _ZtlSecureTear_niPAD[2];
+		unsigned int _ZtlSecureTear_niPAD_CS;
+		short _ZtlSecureTear_niMAD[2];
+		unsigned int _ZtlSecureTear_niMAD_CS;
+		short _ZtlSecureTear_niPDD[2];
+		unsigned int _ZtlSecureTear_niPDD_CS;
+		short _ZtlSecureTear_niMDD[2];
+		unsigned int _ZtlSecureTear_niMDD_CS;
+		short _ZtlSecureTear_niACC[2];
+		unsigned int _ZtlSecureTear_niACC_CS;
+		short _ZtlSecureTear_niEVA[2];
+		unsigned int _ZtlSecureTear_niEVA_CS;
+		short _ZtlSecureTear_niCraft[2];
+		unsigned int _ZtlSecureTear_niCraft_CS;
+		short _ZtlSecureTear_niSpeed[2];
+		unsigned int _ZtlSecureTear_niSpeed_CS;
+		short _ZtlSecureTear_niJump[2];
+		unsigned int _ZtlSecureTear_niJump_CS;
+		short _ZtlSecureTear_niSwim[2];
+		unsigned int _ZtlSecureTear_niSwim_CS;
+		short _ZtlSecureTear_niFatigue[2];
+		unsigned int _ZtlSecureTear_niFatigue_CS;
+		int _ZtlSecureTear_nKnockback[2];
+		unsigned int _ZtlSecureTear_nKnockback_CS;
+		long double _ZtlSecureTear_dRecovery[2];
+		unsigned int _ZtlSecureTear_dRecovery_CS;
+		long double _ZtlSecureTear_dFs[2];
+		unsigned int _ZtlSecureTear_dFs_CS;
+		int _ZtlSecureTear_nSwim[2];
+		unsigned int _ZtlSecureTear_nSwim_CS;
+		int _ZtlSecureTear_nTamingMob[2];
+		unsigned int _ZtlSecureTear_nTamingMob_CS;
+		int _ZtlSecureTear_nIUC[2];
+		unsigned int _ZtlSecureTear_nIUC_CS;
+		char nMinGrade;
+		bool bQuest;
+		bool bPartyQuest;
+		bool bOnly;
+		bool bOnlyEquip;
+		bool bTradeBlock;
+		int nAppliableKarmaType;
+		bool bNotSale;
+		bool bBigSize;
+		bool bExpireOnLogout;
+		short nirPoison;
+		short nirIce;
+		short nirFire;
+		short nirLight;
+		short nirHoly;
+		bool bBindedWhenEquiped;
+		unsigned int dwSpecialID;
+		bool bNotExtend;
+		bool bAccountSharable;
+		bool bSharableOnce;
+		unsigned int dwAfterimageFlag;
+		int nUserInfoScale;
+		POINT ptUserInfoDiff;
+		UINT128 uPetTemplateFlag;
+		unsigned int dwPetAbilityFlag;
+		int nNameTag;
+		int nChatBalloon;
+		ZArray<long> anLevelUpTypePool;
+		ZArray<ZRef<LevelInfo>> apLevelInfo;
+		bool bEpic;
+		int nSetItemID;
+		ZXString<char> sDesc;
+		ZList<ZRef<ItemSkill>> lpItemSkill;
+		ZMap<long, long, long> mSkillLevelBonus;
+		ZArray<ZPair<long, long>> aBonusExpRate;
+		ZArray<ZPair<long, long>> aPotionDiscountRate;
+		ZArray<long> aTamingMobItem;
+		ZRef<ADDITION> pAddition;
+		int nDurability;
+		int nEnchantCategory;
+		bool bTransform;
+		int nIUCMax;
 	};
 
 	/*
