@@ -26,9 +26,9 @@ struct CT_INFO
 	int nType;
 	int nItemNo;
 	int nLine;
-	// pFont    
+	  _com_ptr_t<_com_IIID<IWzFont,&_GUID_2bef046d_ccd6_445a_88c4_929fc35d30ac>> pFont;  
 	ZXString<char> sText;
-	//pIcon
+	_com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e>> pIcon;
 	int nLeft;
 	int nTop;
 	int nWidth;
