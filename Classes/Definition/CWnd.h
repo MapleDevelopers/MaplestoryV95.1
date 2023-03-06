@@ -3,7 +3,7 @@
 #include "../Interfaces/Definition/IUIMsgHandler.h"
 #include "ZRefCounted.h"
 #include "Rect.h"
-#include "Secpoint.h"
+#include "SECPOINT.h"
 
 /*
 00000000 CWnd            struc; (sizeof = 0x80, align = 0x4, copyof_1443)
@@ -27,7 +27,7 @@
 0000007C m_origin        dd ? ; enum CWnd::UIOrigin
 00000080 CWnd            ends
 */
-class CWnd : IGObj, IUIMsgHandler, ZRefCounted
+class CWnd : public IGObj, public IUIMsgHandler, public ZRefCounted
 {
 	/*
 	FFFFFFFF ; enum CWnd::UIOrigin, copyof_38
@@ -56,19 +56,15 @@ class CWnd : IGObj, IUIMsgHandler, ZRefCounted
 		Origin_NUM = 9
 	};
 
-	unsigned long m_dwWndKey;
-	//m_pLayer
-	//m_pAnimationLayer
-	//m_pOverlabLayer
-	int m_width;
-	int m_height;
-	RECT m_rcInvalidated;
-	bool m_bScreenCoord;
-	int m_nBackgrndX;
-	int m_nBackgrndY;
-	SECPOINT m_ptCursorRel;
-	ZList<ZRef<CCtrlWnd>> m_lpChildren;
-	void* m_pFocusChild;
-	//m_pBackgrnd
-	UIOrigin m_origin;
+    unsigned long m_dwWndKey; // DWORD?
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayer;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pAnimationLayer;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pOverlabLayer;
+    int m_nBackgrndX;
+    int m_nBackgrndY;
+    SECPOINT m_ptCursorRel;
+    ZList<ZRef<CCtrlWnd>> m_lpChildren;
+    CCtrlWnd* m_pFocusChild;
+    _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e>> m_pBackgrnd;
+    UIOrigin m_origin;
 };
