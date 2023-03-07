@@ -1,11 +1,14 @@
+#pragma once
+#include "ZAPI.h"
+
 class ZAllocBase
 {
 public:
     static DWORD* _AllocRawBlocks(unsigned int uBlockSize, unsigned int u)
     {
         unsigned int v2 = uBlockSize + 4;
-        void* v3 = ZAPI::GetProcessHeap();
-        unsigned int* v4 = (unsigned int*)ZAPI::HeapAlloc(v3, 0, u * (uBlockSize + 4) + 8);
+        void* v3 = ZAPI.GetProcessHeap();
+        unsigned int* v4 = (unsigned int*)ZAPI.HeapAlloc(v3, 0, u * (uBlockSize + 4) + 8);
         *v4++ = u * (uBlockSize + 4) + 4;
         *v4++ = 0;
         *v4 = uBlockSize;

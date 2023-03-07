@@ -1,8 +1,11 @@
 #pragma once
 
-template <class T> 
+template<typename T>
 class TSingleton
 {
-    public:
-        static T* ms_pInstance;
+public:
+    static T* ms_pInstance;
 };
+
+template<typename T>
+T* TSingleton<T>::ms_pInstance = nullptr;

@@ -1,15 +1,42 @@
 #pragma once
 
-class ZAPI
-{
-public:
-    static HANDLE GetProcessHeap()
-    {
-        return ZAPI::GetProcessHeap(); 
-    }
-
-    static LPVOID HeapAlloc(HANDLE hHeap, DWORD dwFlags, SIZE_T dwBytes) 
-    {
-        return ZAPI::HeapAlloc(hHeap, dwFlags, dwBytes);
-    }
+struct ZAPI {
+    HMODULE LoadLibraryA;
+    FARPROC GetProcAddress;
+    HMODULE GetModuleHandleA;
+    DWORD GetModuleFileNameA;
+    HANDLE CloseHandle;
+    HANDLE GetCurrentProcess;
+    DWORD GetCurrentProcessId;
+    HANDLE OpenProcess;
+    FARPROC ExitProcess;
+    BOOL TerminateProcess;
+    BOOL GetExitCodeProcess;
+    BOOL CreateProcessA;
+    HANDLE GetCurrentThread;
+    DWORD GetCurrentThreadId;
+    int SetThreadPriority;
+    DWORD ResumeThread;
+    DWORD SuspendThread;
+    LONG InterlockedIncrement;
+    LONG InterlockedDecrement;
+    LONG InterlockedExchange;
+    LONG InterlockedExchangeAdd;
+    HANDLE CreateSemaphoreA;
+    BOOL ReleaseSemaphore;
+    HANDLE CreateEventA;
+    BOOL SetEvent;
+    BOOL ResetEvent;
+    HANDLE CreateMutexA;
+    DWORD WaitForSingleObject;
+    DWORD WaitForMultipleObjects;
+    DWORD Sleep;
+    HANDLE CreateIoCompletionPort;
+    BOOL GetQueuedCompletionStatus;
+    BOOL PostQueuedCompletionStatus;
+    HGLOBAL GlobalAlloc;
+    HGLOBAL GlobalFree;
+    LPVOID GlobalLock;
+    BOOL GlobalUnlock;
+    // Todo...
 };

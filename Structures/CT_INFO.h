@@ -26,7 +26,7 @@ struct CT_INFO
 	int nType;
 	int nItemNo;
 	int nLine;
-	  _com_ptr_t<_com_IIID<IWzFont,&_GUID_2bef046d_ccd6_445a_88c4_929fc35d30ac>> pFont;  
+	_com_ptr_t<_com_IIID<IWzFont,&_GUID_2bef046d_ccd6_445a_88c4_929fc35d30ac>> pFont;  
 	ZXString<char> sText;
 	_com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e>> pIcon;
 	int nLeft;
@@ -40,4 +40,4 @@ struct CT_INFO
 	bool bReward;
 	int nNpcNo;
 	int nMapNo;
-};
+}

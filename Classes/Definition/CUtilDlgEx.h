@@ -1,0 +1,90 @@
+#pragma once
+
+#include "CT_INFO.h"
+#include "PET_INFO.h"
+#include "ZRef.h"
+#include "CDialog.h"
+#include "AvatarLook.h"
+#include "CAvatar.h"
+#include "CharacterData.h"
+#include "CCtrlButton.h"
+#include "CCtrlEdit.h"
+#include "CCtrlMLEdit.h"
+#include "CCtrlScrollBar.h"
+#include "CCtrlComboBox.h"
+
+class CUtilDlgEx : CDialog
+{
+    int m_bMsgImage;
+    int m_bMsgImage_Img;
+    int m_dlgType;
+    int m_ctLeft;
+    int m_ctTop;
+    int m_ctHeight;
+    int m_scrHeight;
+    int m_nScrollPos;
+    int m_bScrollBar;
+    int m_wndWidth;
+    int m_wndHeight;
+    int m_nTemplateID;
+    int m_bNoNPC;
+    int m_bQuest;
+    int m_bTextPrev;
+    int m_bTextNext;
+    int m_bImagePrev;
+    int m_bImageNext;
+    ZArray<ZXString<char>> m_aImageList;
+    unsigned short m_usCurImage;
+    char unknown1;
+	char unknown2;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerImage;
+    ZXString<char> m_sInputDefault;
+    int m_nInputLen;
+    int m_nInputNo_Min;
+    int m_nInputNo_Max;
+    int m_nInputNo_Result;
+    int m_nInputStr_Min;
+    int m_nInputCol;
+    int m_nInputLine;
+    ZXString<char> m_sInputStr_Result;
+    int m_bInputStr_Passwd;
+    int m_bKoreanBaseLen;
+    int m_nSelect;
+    int m_nSelectPrev;
+    int m_nListFocus;
+    ZArray<CT_INFO*> m_apListCT;
+    ZArray<long> m_aAvatarCandidate;
+    int m_nAvatarType;
+    int m_nAvatarIndex;
+    int m_bEquipPreview;
+    _com_ptr_t<_com_IIID<IWzCanvas,&_GUID_7600dc6c_9328_4bff_9624_5b0f5c01179e>> m_pCanvasLine;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerNPC;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerNameTag;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerNPCNameTag;
+    ZRef<AvatarLook> m_pAvatarLook;
+    ZRef<CAvatar> m_pAvatar;
+    ZRef<CharacterData> m_pCharacterData;
+    _com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerQDeliveryIcon;
+	ZArray<PET_INFO> m_aPetInfo;
+	int m_nPetIndex;
+	_com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerPet;
+	_com_ptr_t<_com_IIID<IWzGr2DLayer,&_GUID_6dc8c7ce_8e81_4420_b4f6_4b60b7d5fcdf>> m_pLayerPetInfo;
+	CUIToolTip m_uiToolTip;
+	ZRef<CCtrlButton> m_pBtUIClose;
+	ZRef<CCtrlEdit> m_pEditInput;
+	ZRef<CCtrlMLEdit> m_pMLEditInput;
+	ZRef<CCtrlScrollBar> m_pScrollBar;
+	ZRef<CCtrlComboBox> m_pCombobox;
+	ZRef<CCtrlButton> m_apButton[7];
+	ZArray<ZRef<CCtrlButton>> m_apBtnFocus;
+	ZArray<CT_INFO> m_aCT;
+	ZArray<_com_ptr_t<_com_IIID<IWzFont,&_GUID_2bef046d_ccd6_445a_88c4_929fc35d30ac>>> m_apFont;
+	_com_ptr_t<_com_IIID<IWzFont,&_GUID_2bef046d_ccd6_445a_88c4_929fc35d30ac>> m_pFontPet;
+	int m_nCurDisplayItemIndex;
+	int m_nCurDisplayTextItemPos;
+	bool m_bFinishShow;
+	int m_nBtnFocus;
+	bool m_bParam;
+	bool m_bSpeakerOnRight;
+	CLayoutMan m_lm;
+};
