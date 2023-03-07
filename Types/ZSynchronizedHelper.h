@@ -1,8 +1,11 @@
-template<typename T>
+#pragma once
+#include <winnt.h>
+
+template<typename ZFatalSection>
 class ZSynchronizedHelper
 {
 public:
-    ZSynchronizedHelper(T* pLock) : m_pLock(pLock)
+    ZSynchronizedHelper(ZFatalSection* pLock) : m_pLock(pLock)
     {
         if (m_pLock != NULL)
         {
@@ -22,5 +25,5 @@ public:
     }
 
 private:
-    T* m_pLock;
+    ZFatalSection* m_pLock;
 };
