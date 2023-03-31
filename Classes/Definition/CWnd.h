@@ -1,6 +1,8 @@
 #pragma once
 #include "../Interfaces/Definition/IGObj.h"
 #include "../Interfaces/Definition/IUIMsgHandler.h"
+#include "../Interfaces/Definition/IWzGr2DLayer.h"
+#include "../Interfaces/Definition/IWzCanvas.h"
 #include "ZRefCounted.h"
 #include "Rect.h"
 #include "SECPOINT.h"

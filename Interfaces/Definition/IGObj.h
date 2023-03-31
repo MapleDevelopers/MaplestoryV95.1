@@ -1,9 +1,14 @@
 #pragma once
 
-class IGObj
-{
-	~IGObj() = default;
-
+class IGObj {
 public:
-	virtual void Update(IGObj* this);
+    struct IGObjVtbl {
+        void(__thiscall* Update)(IGObj*);
+    };
+
+    IGObjVtbl* vfptr;
+
+    void Update() {
+        vfptr->Update(this);
+    }
 };
